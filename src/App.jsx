@@ -5,9 +5,11 @@ import LandingPage from './pages/LandingPage';
 import NominaTool from './pages/NominaTool';
 import GuideDomestica from './pages/GuideDomestica';
 import { ThemeProvider } from './context/ThemeContext';
+import { LanguageProvider } from './context/LanguageContext';
 
 function App() {
   return (
+    <LanguageProvider>
     <ThemeProvider>
       <Router>
         <Routes>
@@ -19,6 +21,7 @@ function App() {
         </Routes>
       </Router>
     </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

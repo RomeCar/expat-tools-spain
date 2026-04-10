@@ -1,0 +1,214 @@
+.nomina-doc {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: #ffffff;
+  color: #000000;
+  width: 100%;
+  max-width: 210mm;
+  margin: 0 auto;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.nomina-header {
+  background: #1e3a5f;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nomina-data-grid {
+  display: flex;
+  border-bottom: 2px solid #ffffff;
+}
+
+.nomina-data-col {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(90px, 28%) 72%;
+}
+
+.nomina-label {
+  background: #1e3a5f;
+  color: #ffffff;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nomina-value {
+  background: #FDF7E5;
+  color: #000000;
+  padding: 4px 8px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.nomina-period-bar {
+  display: flex;
+  background: #3d5a80;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.nomina-period-bar > div {
+  padding: 6px 12px;
+}
+
+.nomina-period-main {
+  flex: 1;
+  text-align: center;
+}
+
+.nomina-period-detail {
+  background: #1e3a5f;
+  border-left: 1px solid #5a7da8;
+}
+
+.nomina-period-value {
+  background: #FDF7E5;
+  color: #000;
+  width: 80px;
+  text-align: center;
+}
+
+.nomina-section-header {
+  background: #2d4a6f;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.nomina-subsection-header {
+  background: #4a6d94;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 4px 10px;
+  font-size: 10px;
+}
+
+.nomina-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nomina-table th {
+  background: #3d5a80;
+  color: #ffffff;
+  padding: 5px 8px;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.nomina-table th.text-left { text-align: left; }
+.nomina-table th.text-right { text-align: right; }
+
+.nomina-table td {
+  padding: 4px 8px;
+  border: 1px solid #e8ecf0;
+  font-size: 10.5px;
+}
+
+.nomina-table td.text-right {
+  text-align: right;
+}
+
+.nomina-table tr:nth-child(even) td {
+  background: #f8f9fb;
+}
+
+.nomina-row-total td {
+  background: #e2e8f0 !important;
+  font-weight: bold;
+}
+
+.nomina-row-total td:first-child {
+  text-align: right;
+}
+
+.nomina-row-deducir td {
+  background: #4a5568 !important;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.nomina-row-deducir td:first-child {
+  text-align: right;
+}
+
+.nomina-row-liquido td {
+  background: #1a7a6d !important;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.nomina-row-liquido td:first-child {
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.nomina-row-employer-total td {
+  background: #3d5a80 !important;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nomina-row-employer-total td:first-child {
+  text-align: right;
+}
+
+.nomina-row-cargo td {
+  background: #1a7a6d !important;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 6px 12px;
+}
+
+.nomina-row-cargo td:first-child {
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.nomina-row-coste td {
+  background: #1e3a5f !important;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 6px 12px;
+  text-transform: uppercase;
+}
+
+.nomina-row-coste td:first-child {
+  text-align: right;
+}
+
+.nomina-row-coste td:last-child {
+  background: #FDF7E5 !important;
+  color: #000;
+}
+
+.nomina-signatures {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 24px;
+  font-size: 10px;
+}
+
+.nomina-footer {
+  text-align: center;
+  margin: 10px 0 8px;
+  font-size: 8.5px;
+  font-style: italic;
+  color: #718096;
+}
