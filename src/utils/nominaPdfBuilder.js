@@ -1,325 +1,295 @@
 import jsPDF from 'jspdf';
 import { formatCurrency, formatPercentage } from './formatters.js';
+import en from '../i18n/en.json';
+import es from '../i18n/es.json';
 
-// Clean color palette
-const TEXT = [31, 41, 55];        // #1f2937
-const TEXT_SEC = [107, 114, 128]; // #6b7280
-const TEXT_MUTED = [156, 163, 175]; // #9ca3af
-const ACCENT = [37, 99, 235];    // #2563eb
-const HERO_BG = [239, 246, 255]; // #eff6ff
-const HERO_BORDER = [191, 219, 254]; // #bfdbfe
-const HERO_TEXT = [30, 58, 138]; // #1e3a8a
-const BORDER = [229, 231, 235];  // #e5e7eb
-const BORDER_LIGHT = [243, 244, 246]; // #f3f4f6
-const WHITE = [255, 255, 255];
+const TEXT = [31, 41, 55];
+const TEXT_SEC = [107, 114, 128];
+const TEXT_MUTED = [156, 163, 175];
+const ACCENT = [37, 99, 235];
+const HERO_BG = [239, 246, 255];
+const HERO_BORDER = [191, 219, 254];
+const HERO_TEXT = [30, 58, 138];
+const BORDER = [229, 231, 235];
+const BORDER_LIGHT = [243, 244, 246];
 
 const PAGE_W = 210;
-const MARGIN = 20;
-const CONTENT_W = PAGE_W - MARGIN * 2;
+const PAGE_H = 297;
+const M = 15; // margin
+const W = PAGE_W - M * 2; // content width
 
 export function generateNominaPdf(formData, results, t) {
   const doc = new jsPDF('p', 'mm', 'a4');
-  const months = t('common.months');
-  const p = t('nomina.preview');
-  const monthName = months[parseInt(formData.periodMonth)] || '';
-  let y = MARGIN;
+  const lang = document.documentElement.lang || 'en';
+  const isEN = lang === 'en';
 
-  function setColor(c) { doc.setTextColor(...c); }
-  function setFont(size, style = 'normal') { doc.setFontSize(size); doc.setFont('helvetica', style); }
-  function text(txt, x, yy, opts) { doc.text(String(txt || ''), x, yy, opts); }
-  function line(x1, y1, x2, y2, color = BORDER) {
-    doc.setDrawColor(...color);
-    doc.setLineWidth(0.3);
-    doc.line(x1, y1, x2, y2);
-  }
-  function thickLine(x1, y1, x2, y2, color = ACCENT) {
-    doc.setDrawColor(...color);
-    doc.setLineWidth(0.6);
-    doc.line(x1, y1, x2, y2);
+  // Always load both languages for bilingual labels
+  const pEN = en.nomina.preview;
+  const pES = es.nomina.preview;
+  const p = isEN ? pEN : pES;
+
+  // Bilingual helper: "English / Espanol" when EN, just Spanish when ES
+  function bi(enKey, esKey) {
+    if (!isEN) return esKey || enKey;
+    return `${enKey} / ${esKey}`;
   }
 
-  // --- 1. HEADER ---
-  setColor(TEXT);
-  setFont(18, 'bold');
-  text(p.title, MARGIN, y + 6);
-  setColor(TEXT_SEC);
-  setFont(13, 'normal');
-  text(`${monthName} ${formData.periodYear}`, MARGIN + CONTENT_W, y + 6, { align: 'right' });
-  y += 10;
-  thickLine(MARGIN, y, MARGIN + CONTENT_W, y, ACCENT);
-  y += 12;
+  const monthsEN = en.common.months;
+  const monthsES = es.common.months;
+  const monthIdx = parseInt(formData.periodMonth);
+  const monthEN = monthsEN[monthIdx] || '';
+  const monthES = monthsES[monthIdx] || '';
+  const monthDisplay = isEN ? `${monthEN} / ${monthES}` : monthES;
+  const monthName = isEN ? monthEN : monthES;
 
-  // --- 2. EMPLOYER / WORKER INFO ---
-  const halfW = CONTENT_W / 2 - 8;
-  const rightX = MARGIN + CONTENT_W / 2 + 8;
+  let y = M;
 
-  function drawInfoCol(x, w, title, rows) {
-    setColor(ACCENT);
-    setFont(8, 'bold');
-    text(title, x, y);
-    let iy = y + 5;
+  function setC(c) { doc.setTextColor(...c); }
+  function setF(size, style = 'normal') { doc.setFontSize(size); doc.setFont('helvetica', style); }
+  function tx(txt, x, yy, opts) { doc.text(String(txt || ''), x, yy, opts); }
+  function ln(x1, y1, x2, y2, color = BORDER) {
+    doc.setDrawColor(...color); doc.setLineWidth(0.3); doc.line(x1, y1, x2, y2);
+  }
+  function accentLn(x1, y1, x2, y2) {
+    doc.setDrawColor(...ACCENT); doc.setLineWidth(0.5); doc.line(x1, y1, x2, y2);
+  }
+
+  // --- HEADER ---
+  setC(TEXT); setF(16, 'bold');
+  tx(bi('PAYSLIP', 'NOMINA'), M, y + 5);
+  setC(TEXT_SEC); setF(11, 'normal');
+  tx(monthDisplay + ' ' + formData.periodYear, M + W, y + 5, { align: 'right' });
+  y += 8;
+  accentLn(M, y, M + W, y);
+  y += 8;
+
+  // --- EMPLOYER / WORKER INFO ---
+  const halfW = W / 2 - 6;
+  const rX = M + W / 2 + 6;
+
+  function infoCol(x, w, title, rows) {
+    setC(ACCENT); setF(7, 'bold'); tx(title, x, y);
+    let iy = y + 4;
     for (const [label, value] of rows) {
-      setColor(TEXT_SEC);
-      setFont(8, 'normal');
-      text(label, x, iy);
-      setColor(TEXT);
-      setFont(8, 'normal');
-      text(value || '', x + w, iy, { align: 'right' });
-      iy += 5;
+      setC(TEXT_SEC); setF(7.5, 'normal'); tx(label, x, iy);
+      setC(TEXT); tx(value || '', x + w, iy, { align: 'right' });
+      iy += 4;
     }
     return iy;
   }
 
-  const leftRows = [
-    [p.cifNie, formData.employerNif],
-    [p.address, formData.employerAddress],
-    [p.locality, formData.employerLocality],
-    [p.ccc, formData.employerCCC],
+  const lRows = [
+    [bi(pEN.cifNie, pES.cifNie), formData.employerNif],
+    [bi(pEN.address, pES.address), formData.employerAddress],
+    [bi(pEN.locality, pES.locality), formData.employerLocality],
+    [pEN.ccc, formData.employerCCC],
     [formData.employerName, ''],
   ];
-  const rightRows = [
-    [p.nifNie, formData.workerNie],
-    [p.ssNumber, formData.ssNumber],
-    [p.category, formData.workerCategory],
-    [p.seniority, formData.workerSeniority],
+  const rRows = [
+    [bi(pEN.nifNie, pES.nifNie), formData.workerNie],
+    [bi(pEN.ssNumber, pES.ssNumber), formData.ssNumber],
+    [bi(pEN.category, pES.category), formData.workerCategory],
+    [bi(pEN.seniority, pES.seniority), formData.workerSeniority],
     [formData.workerName, ''],
   ];
 
-  const leftEnd = drawInfoCol(MARGIN, halfW, p.employer, leftRows);
-  drawInfoCol(rightX, halfW, p.worker, rightRows);
-  y = leftEnd + 4;
-  line(MARGIN, y, MARGIN + CONTENT_W, y);
+  const lEnd = infoCol(M, halfW, bi(pEN.employer, pES.employer), lRows);
+  infoCol(rX, halfW, bi(pEN.worker, pES.worker), rRows);
+  y = lEnd + 2;
+  ln(M, y, M + W, y);
+  y += 4;
+
+  // --- PERIOD ---
+  setC(TEXT_SEC); setF(8, 'normal');
+  tx(`${bi(pEN.period, pES.period)}:`, M, y);
+  setC(TEXT); setF(8, 'bold');
+  tx(`${monthName} ${formData.periodYear}`, M + 28, y);
+  setC(TEXT_SEC); setF(8, 'normal');
+  tx(`${formData.hoursPerMonth} h`, M + W / 2, y, { align: 'center' });
+  tx(`30 ${p.days}`, M + W, y, { align: 'right' });
+  y += 3;
+  ln(M, y, M + W, y);
   y += 6;
 
-  // --- 3. PERIOD LINE ---
-  setColor(TEXT_SEC);
-  setFont(9, 'normal');
-  text(`${p.period}: `, MARGIN, y);
-  setColor(TEXT);
-  setFont(9, 'bold');
-  text(`${monthName} ${formData.periodYear}`, MARGIN + 22, y);
-  setColor(TEXT_SEC);
-  setFont(9, 'normal');
-  text(`${formData.hoursPerMonth} h / ${p.hoursMonth}`, MARGIN + CONTENT_W / 2, y, { align: 'center' });
-  text(`30 ${p.days}`, MARGIN + CONTENT_W, y, { align: 'right' });
-  y += 4;
-  line(MARGIN, y, MARGIN + CONTENT_W, y);
-  y += 10;
+  // --- DEVENGOS ---
+  setC(TEXT); setF(9, 'bold');
+  tx(bi(pEN.devengos, pES.devengos), M, y);
+  y += 1.5;
+  accentLn(M, y, M + W, y);
+  y += 5;
 
-  // --- 4. DEVENGOS ---
-  setColor(TEXT);
-  setFont(10, 'bold');
-  text(p.devengos, MARGIN, y);
-  y += 2;
-  thickLine(MARGIN, y, MARGIN + CONTENT_W, y, ACCENT);
-  y += 7;
-
-  function dataRow(label, value, bold = false) {
-    setColor(bold ? TEXT : [75, 85, 99]);
-    setFont(9, bold ? 'bold' : 'normal');
-    text(label, MARGIN, y);
-    setColor(TEXT);
-    setFont(9, bold ? 'bold' : 'normal');
-    text(value, MARGIN + CONTENT_W, y, { align: 'right' });
-    line(MARGIN, y + 2, MARGIN + CONTENT_W, y + 2, BORDER_LIGHT);
-    y += 6;
+  function dRow(label, value, bold = false) {
+    setC(bold ? TEXT : [75, 85, 99]); setF(8, bold ? 'bold' : 'normal');
+    tx(label, M, y);
+    setC(TEXT); setF(8, bold ? 'bold' : 'normal');
+    tx(value, M + W, y, { align: 'right' });
+    ln(M, y + 1.5, M + W, y + 1.5, BORDER_LIGHT);
+    y += 4.5;
   }
 
-  const salLabel = formData.pagasProrrateadas ? p.salarioMensual : p.salarioMensualNoProrrateo;
-  dataRow(salLabel, formatCurrency(results.devengos.salarioBase));
+  const salLabel = formData.pagasProrrateadas
+    ? bi(pEN.salarioMensual, pES.salarioMensual)
+    : bi(pEN.salarioMensualNoProrrateo, pES.salarioMensualNoProrrateo);
+  dRow(salLabel, formatCurrency(results.devengos.salarioBase));
 
   if (formData.pagasProrrateadas) {
-    dataRow(p.pagaExtraJunio, formatCurrency(0));
-    dataRow(p.pagaExtraDiciembre, formatCurrency(0));
+    dRow(bi(pEN.pagaExtraJunio, pES.pagaExtraJunio), formatCurrency(0));
+    dRow(bi(pEN.pagaExtraDiciembre, pES.pagaExtraDiciembre), formatCurrency(0));
   }
   if (results.devengos.pagaExtra > 0) {
-    dataRow('Paga extra abonada', formatCurrency(results.devengos.pagaExtra), true);
+    dRow('Paga extra', formatCurrency(results.devengos.pagaExtra), true);
   }
 
   // Subtotal
-  y += 1;
-  doc.setDrawColor(...[209, 213, 219]);
-  doc.setLineWidth(0.3);
-  doc.line(MARGIN, y, MARGIN + CONTENT_W, y);
-  y += 5;
-  setColor(TEXT);
-  setFont(10, 'bold');
-  text(p.totalDevengado, MARGIN, y);
-  text(formatCurrency(results.devengos.totalDevengado), MARGIN + CONTENT_W, y, { align: 'right' });
-  y += 10;
-
-  // --- 5. DEDUCCIONES ---
-  setColor(TEXT);
-  setFont(10, 'bold');
-  text(p.deducciones, MARGIN, y);
-  y += 2;
-  thickLine(MARGIN, y, MARGIN + CONTENT_W, y, ACCENT);
+  doc.setDrawColor(...[209, 213, 219]); doc.setLineWidth(0.3);
+  doc.line(M, y, M + W, y);
+  y += 4;
+  setC(TEXT); setF(9, 'bold');
+  tx(bi(pEN.totalDevengado, pES.totalDevengado), M, y);
+  tx(formatCurrency(results.devengos.totalDevengado), M + W, y, { align: 'right' });
   y += 7;
 
-  // Header row
-  const dedCols = [MARGIN, MARGIN + CONTENT_W * 0.5, MARGIN + CONTENT_W * 0.68, MARGIN + CONTENT_W];
-  setColor(TEXT_SEC);
-  setFont(8, 'bold');
-  text(p.concepto, dedCols[0], y);
-  text(p.baseCotiz, dedCols[1], y, { align: 'right' });
-  text(p.tipo, dedCols[2], y, { align: 'right' });
-  text(p.importe, dedCols[3], y, { align: 'right' });
-  y += 2;
-  line(MARGIN, y, MARGIN + CONTENT_W, y);
+  // --- DEDUCCIONES ---
+  setC(TEXT); setF(9, 'bold');
+  tx(bi(pEN.deducciones, pES.deducciones), M, y);
+  y += 1.5;
+  accentLn(M, y, M + W, y);
   y += 5;
 
-  function dedRow(label, base, rate, amount) {
-    setColor([75, 85, 99]);
-    setFont(9, 'normal');
-    text(label, dedCols[0], y);
-    text(base, dedCols[1], y, { align: 'right' });
-    text(rate, dedCols[2], y, { align: 'right' });
-    setColor(TEXT);
-    text(amount, dedCols[3], y, { align: 'right' });
-    line(MARGIN, y + 2, MARGIN + CONTENT_W, y + 2, BORDER_LIGHT);
-    y += 6;
+  const dC = [M, M + W * 0.52, M + W * 0.7, M + W];
+  setC(TEXT_SEC); setF(7, 'bold');
+  tx(bi(pEN.concepto, pES.concepto), dC[0], y);
+  tx(bi(pEN.baseCotiz, pES.baseCotiz), dC[1], y, { align: 'right' });
+  tx(bi(pEN.tipo, pES.tipo), dC[2], y, { align: 'right' });
+  tx(bi(pEN.importe, pES.importe), dC[3], y, { align: 'right' });
+  y += 1.5;
+  ln(M, y, M + W, y);
+  y += 4;
+
+  function ddRow(label, base, rate, amount) {
+    setC([75, 85, 99]); setF(8, 'normal');
+    tx(label, dC[0], y);
+    tx(base, dC[1], y, { align: 'right' });
+    tx(rate, dC[2], y, { align: 'right' });
+    setC(TEXT); tx(amount, dC[3], y, { align: 'right' });
+    ln(M, y + 1.5, M + W, y + 1.5, BORDER_LIGHT);
+    y += 4.5;
   }
 
-  dedRow(
-    `${p.ccMei} (${formatPercentage(results.deductions.ccPlusMeiRate)})`,
+  ddRow(
+    `${bi(pEN.ccMei, pES.ccMei)} (${formatPercentage(results.deductions.ccPlusMeiRate)})`,
     formatCurrency(results.baseCotizacion),
     formatPercentage(results.deductions.ccPlusMeiRate),
     formatCurrency(results.deductions.ccPlusMei)
   );
-  dedRow(
-    `${p.desempleo} (${formatPercentage(results.deductions.desempleoRate)})`,
+  ddRow(
+    `${bi(pEN.desempleo, pES.desempleo)} (${formatPercentage(results.deductions.desempleoRate)})`,
     formatCurrency(results.baseCotizacion),
     formatPercentage(results.deductions.desempleoRate),
     formatCurrency(results.deductions.desempleo)
   );
 
-  // Subtotal
-  y += 1;
-  doc.setDrawColor(...[209, 213, 219]);
-  doc.setLineWidth(0.3);
-  doc.line(MARGIN, y, MARGIN + CONTENT_W, y);
-  y += 5;
-  setColor(TEXT);
-  setFont(10, 'bold');
-  text(p.totalDeducir, MARGIN, y);
-  text(formatCurrency(results.deductions.total), MARGIN + CONTENT_W, y, { align: 'right' });
-  y += 10;
+  doc.setDrawColor(...[209, 213, 219]); doc.setLineWidth(0.3);
+  doc.line(M, y, M + W, y);
+  y += 4;
+  setC(TEXT); setF(9, 'bold');
+  tx(bi(pEN.totalDeducir, pES.totalDeducir), M, y);
+  tx(formatCurrency(results.deductions.total), M + W, y, { align: 'right' });
+  y += 7;
 
-  // --- 6. HERO: NET PAY ---
+  // --- HERO: NET PAY ---
   doc.setFillColor(...HERO_BG);
   doc.setDrawColor(...HERO_BORDER);
   doc.setLineWidth(0.3);
-  doc.roundedRect(MARGIN, y, CONTENT_W, 18, 3, 3, 'FD');
-  setColor([30, 64, 175]); // #1e40af
-  setFont(10, 'bold');
-  text(p.liquidoTotal, MARGIN + 10, y + 11);
-  setColor(HERO_TEXT);
-  setFont(20, 'bold');
-  text(formatCurrency(results.liquido), MARGIN + CONTENT_W - 10, y + 12, { align: 'right' });
-  y += 24;
+  doc.roundedRect(M, y, W, 14, 2, 2, 'FD');
+  setC([30, 64, 175]); setF(8, 'bold');
+  tx(bi(pEN.liquidoTotal, pES.liquidoTotal), M + 6, y + 9);
+  setC(HERO_TEXT); setF(16, 'bold');
+  tx(formatCurrency(results.liquido), M + W - 6, y + 9.5, { align: 'right' });
+  y += 18;
 
-  // --- 7. SIGNATURES ---
-  setColor(TEXT_SEC);
-  setFont(8, 'normal');
-  text(p.firmaEmpleador, MARGIN, y + 4);
-  text(`${p.fecha}: ${monthName} ${formData.periodYear}`, PAGE_W / 2, y + 4, { align: 'center' });
-  text(p.recibi, MARGIN + CONTENT_W, y + 4, { align: 'right' });
-  doc.setDrawColor(...[209, 213, 219]);
-  doc.setLineWidth(0.2);
-  doc.line(MARGIN, y + 16, MARGIN + 45, y + 16);
-  doc.line(PAGE_W / 2 - 18, y + 16, PAGE_W / 2 + 18, y + 16);
-  doc.line(MARGIN + CONTENT_W - 45, y + 16, MARGIN + CONTENT_W, y + 16);
-  y += 22;
+  // --- SIGNATURES ---
+  setC(TEXT_SEC); setF(7, 'normal');
+  tx(bi(pEN.firmaEmpleador, pES.firmaEmpleador), M, y + 3);
+  tx(`${bi(pEN.fecha, pES.fecha)}: ${monthName} ${formData.periodYear}`, PAGE_W / 2, y + 3, { align: 'center' });
+  tx(bi(pEN.recibi, pES.recibi), M + W, y + 3, { align: 'right' });
+  doc.setDrawColor(...[209, 213, 219]); doc.setLineWidth(0.2);
+  doc.line(M, y + 12, M + 40, y + 12);
+  doc.line(PAGE_W / 2 - 15, y + 12, PAGE_W / 2 + 15, y + 12);
+  doc.line(M + W - 40, y + 12, M + W, y + 12);
+  y += 16;
 
-  // --- 8. SEPARATOR ---
-  doc.setDrawColor(...[209, 213, 219]);
-  doc.setLineWidth(0.2);
-  doc.setLineDashPattern([2, 2], 0);
-  doc.line(MARGIN, y, MARGIN + CONTENT_W, y);
+  // --- SEPARATOR ---
+  doc.setDrawColor(...[209, 213, 219]); doc.setLineWidth(0.2);
+  doc.setLineDashPattern([1.5, 1.5], 0);
+  doc.line(M, y, M + W, y);
   doc.setLineDashPattern([], 0);
-  y += 8;
+  y += 5;
 
-  // --- 9. EMPLOYER COSTS (secondary) ---
-  setColor(TEXT_MUTED);
-  setFont(9, 'bold');
-  text(p.seccionEmpleador, MARGIN, y);
-  y += 3;
-  line(MARGIN, y, MARGIN + CONTENT_W, y);
-  y += 6;
-
-  // Header
-  const empCols = [MARGIN, MARGIN + CONTENT_W * 0.38, MARGIN + CONTENT_W * 0.55, MARGIN + CONTENT_W * 0.72, MARGIN + CONTENT_W];
-  setColor(TEXT_MUTED);
-  setFont(7, 'bold');
-  text(p.concepto, empCols[0], y);
-  text('Base', empCols[1], y, { align: 'right' });
-  text(p.tiposBruto, empCols[2], y, { align: 'right' });
-  text(p.bonificacion, empCols[3], y, { align: 'right' });
-  text(p.cuotaNeta, empCols[4], y, { align: 'right' });
+  // --- EMPLOYER COSTS ---
+  setC(TEXT_MUTED); setF(8, 'bold');
+  tx(bi(pEN.seccionEmpleador, pES.seccionEmpleador), M, y);
   y += 2;
-  line(MARGIN, y, MARGIN + CONTENT_W, y);
-  y += 4.5;
+  ln(M, y, M + W, y);
+  y += 4;
+
+  const eC = [M, M + W * 0.4, M + W * 0.56, M + W * 0.72, M + W];
+  setC(TEXT_MUTED); setF(6.5, 'bold');
+  tx(bi(pEN.concepto, pES.concepto), eC[0], y);
+  tx('Base', eC[1], y, { align: 'right' });
+  tx(bi(pEN.tiposBruto, pES.tiposBruto), eC[2], y, { align: 'right' });
+  tx(bi(pEN.bonificacion, pES.bonificacion), eC[3], y, { align: 'right' });
+  tx(bi(pEN.cuotaNeta, pES.cuotaNeta), eC[4], y, { align: 'right' });
+  y += 1.5;
+  ln(M, y, M + W, y);
+  y += 3.5;
 
   const empLines = [
-    { label: p.ccBonif, data: results.employerCosts.contingenciasComunes },
-    { label: `${p.meiEmpleador} (${formatPercentage(results.employerCosts.mei.grossRate)})`, data: results.employerCosts.mei },
-    { label: p.atep, data: results.employerCosts.atep },
-    { label: p.desempleoBonif, data: results.employerCosts.desempleo },
-    { label: p.fogasaBonif, data: results.employerCosts.fogasa },
+    { label: bi(pEN.ccBonif, pES.ccBonif), data: results.employerCosts.contingenciasComunes },
+    { label: `${bi(pEN.meiEmpleador, pES.meiEmpleador)} (${formatPercentage(results.employerCosts.mei.grossRate)})`, data: results.employerCosts.mei },
+    { label: bi(pEN.atep, pES.atep), data: results.employerCosts.atep },
+    { label: bi(pEN.desempleoBonif, pES.desempleoBonif), data: results.employerCosts.desempleo },
+    { label: bi(pEN.fogasaBonif, pES.fogasaBonif), data: results.employerCosts.fogasa },
   ];
 
   for (const row of empLines) {
-    setColor(TEXT_SEC);
-    setFont(8, 'normal');
-    text(row.label, empCols[0], y);
-    text(formatCurrency(results.baseCotizacion), empCols[1], y, { align: 'right' });
-    text(formatPercentage(row.data.grossRate), empCols[2], y, { align: 'right' });
-    text(row.data.bonusPercent > 0 ? formatPercentage(row.data.bonusPercent, 0) : '-', empCols[3], y, { align: 'right' });
-    setColor(TEXT);
-    setFont(8, 'normal');
-    text(formatCurrency(row.data.netAmount), empCols[4], y, { align: 'right' });
-    line(MARGIN, y + 2, MARGIN + CONTENT_W, y + 2, BORDER_LIGHT);
-    y += 5;
+    setC(TEXT_SEC); setF(7, 'normal');
+    tx(row.label, eC[0], y);
+    tx(formatCurrency(results.baseCotizacion), eC[1], y, { align: 'right' });
+    tx(formatPercentage(row.data.grossRate), eC[2], y, { align: 'right' });
+    tx(row.data.bonusPercent > 0 ? formatPercentage(row.data.bonusPercent, 0) : '-', eC[3], y, { align: 'right' });
+    setC(TEXT); setF(7, 'normal');
+    tx(formatCurrency(row.data.netAmount), eC[4], y, { align: 'right' });
+    ln(M, y + 1.5, M + W, y + 1.5, BORDER_LIGHT);
+    y += 4;
   }
 
-  // Totals
-  y += 2;
-  function empTotal(label, value, isPrimary = false) {
-    if (isPrimary) {
-      doc.setDrawColor(...TEXT);
-      doc.setLineWidth(0.5);
-      doc.line(MARGIN, y, MARGIN + CONTENT_W, y);
-      y += 5;
-      setColor(TEXT);
-      setFont(10, 'bold');
-    } else {
-      doc.setDrawColor(...[209, 213, 219]);
-      doc.setLineWidth(0.3);
-      doc.line(MARGIN, y, MARGIN + CONTENT_W, y);
-      y += 4;
-      setColor([75, 85, 99]);
-      setFont(9, 'normal');
-    }
-    text(label, MARGIN, y);
-    setFont(isPrimary ? 10 : 9, isPrimary ? 'bold' : 'bold');
-    text(value, MARGIN + CONTENT_W, y, { align: 'right' });
-    y += isPrimary ? 6 : 5;
+  y += 1;
+  function eTotal(label, value, primary = false) {
+    doc.setDrawColor(...(primary ? TEXT : [209, 213, 219]));
+    doc.setLineWidth(primary ? 0.4 : 0.3);
+    doc.line(M, y, M + W, y);
+    y += 3.5;
+    setC(primary ? TEXT : [75, 85, 99]);
+    setF(primary ? 9 : 8, primary ? 'bold' : 'normal');
+    tx(label, M, y);
+    setF(primary ? 9 : 8, 'bold');
+    tx(value, M + W, y, { align: 'right' });
+    y += primary ? 5 : 4;
   }
 
-  empTotal(p.totalCuotaEmpleador, formatCurrency(results.employerCosts.totalSS));
-  empTotal(p.cargoBancario, formatCurrency(results.cargoBancarioSS));
-  empTotal(p.costeTotalEmpleador, formatCurrency(results.costeTotalEmpleador), true);
+  eTotal(bi(pEN.totalCuotaEmpleador, pES.totalCuotaEmpleador), formatCurrency(results.employerCosts.totalSS));
+  eTotal(bi(pEN.cargoBancario, pES.cargoBancario), formatCurrency(results.cargoBancarioSS));
+  eTotal(bi(pEN.costeTotalEmpleador, pES.costeTotalEmpleador), formatCurrency(results.costeTotalEmpleador), true);
 
-  // --- 10. FOOTER ---
+  // --- FOOTER ---
+  y += 3;
+  ln(M, y, M + W, y);
   y += 4;
-  line(MARGIN, y, MARGIN + CONTENT_W, y);
-  y += 5;
-  setColor(TEXT_MUTED);
-  setFont(7, 'italic');
+  setC(TEXT_MUTED); setF(6.5, 'italic');
   const footer = `${monthName} ${formData.periodYear}  |  CCC: ${formData.employerCCC}  |  SS ${formData.workerName.split(' ')[0] || ''}: ${formData.ssNumber}`;
-  text(footer, PAGE_W / 2, y, { align: 'center' });
+  tx(footer, PAGE_W / 2, y, { align: 'center' });
 
-  // Save
   const workerSlug = (formData.workerName || 'Worker').replace(/\s+/g, '_');
   doc.save(`Nomina_${workerSlug}_${monthName}_${formData.periodYear}.pdf`);
 }
