@@ -25,7 +25,8 @@ export default function NominaTool() {
     contractType: 'indefinido',
     periodMonth: '3', // April (0-indexed)
     periodYear: '2026',
-    hoursPerMonth: '34.77',
+    hoursPerWeek: '8',
+    hoursPerMonth: '34.64',
     hourlyRate: String(REGULATIONS_2026.smi.hourly),
     pagasProrrateadas: true,
     includePagaExtra: false,
@@ -34,7 +35,13 @@ export default function NominaTool() {
   });
 
   const handleFormChange = (updates) => {
-    setFormData(prev => ({ ...prev, ...updates }));
+    setFormData(prev => {
+      const next = { ...prev, ...updates };
+      if ('hoursPerWeek' in updates) {
+        next.hoursPerMonth = (parseFloat(updates.hoursPerWeek) * 4.33).toFixed(2);
+      }
+      return next;
+    });
   };
 
   const results = calculateNominaFull({

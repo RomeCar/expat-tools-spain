@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { formatCurrency } from '../../utils/formatters';
-import { FileText, ChevronDown, ChevronUp, Settings } from 'lucide-react';
+import { FileText, ChevronDown, ChevronUp, Settings, HelpCircle } from 'lucide-react';
 
 export default function NominaForm({ formData, onChange, results }) {
   const { t } = useLanguage();
@@ -55,7 +55,13 @@ export default function NominaForm({ formData, onChange, results }) {
         </div>
       </div>
       <div className="input-group" style={groupStyle}>
-        <label className="input-label" style={labelStyle}>{t('nomina.form.employerCCC')}</label>
+        <label className="input-label" style={{ ...labelStyle, display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+          {t('nomina.form.employerCCC')}
+          <span style={{ position: 'relative', display: 'inline-flex' }} className="tooltip-wrap">
+            <HelpCircle size={13} style={{ color: 'var(--accent-primary)', cursor: 'help' }} />
+            <span className="tooltip-text">{t('nomina.form.employerCCCTooltip')}</span>
+          </span>
+        </label>
         <input type="text" name="employerCCC" className="input-field" style={inputStyle} value={formData.employerCCC} onChange={handleChange} />
       </div>
 
@@ -106,7 +112,7 @@ export default function NominaForm({ formData, onChange, results }) {
       <div style={{ fontSize: '0.7rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-tertiary)', marginTop: '0.75rem', marginBottom: '0.5rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-color)' }}>
         {t('nomina.form.periodSection')}
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.75rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
         <div className="input-group" style={groupStyle}>
           <label className="input-label" style={labelStyle}>{t('nomina.form.month')}</label>
           <select name="periodMonth" className="input-field" style={inputStyle} value={formData.periodMonth} onChange={handleChange}>
@@ -120,9 +126,23 @@ export default function NominaForm({ formData, onChange, results }) {
             {[2024, 2025, 2026, 2027, 2028, 2029, 2030].map(y => <option key={y} value={y}>{y}</option>)}
           </select>
         </div>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+        <div className="input-group" style={groupStyle}>
+          <label className="input-label" style={labelStyle}>{t('nomina.form.hoursPerWeek')}</label>
+          <input type="number" step="0.5" min="1" max="40" name="hoursPerWeek" className="input-field" style={inputStyle} value={formData.hoursPerWeek} onChange={handleNumber} />
+          <div style={{ fontSize: '0.65rem', color: 'var(--text-tertiary)', marginTop: '0.25rem' }}>
+            {t('nomina.form.hoursPerWeekHelp')}
+          </div>
+        </div>
         <div className="input-group" style={groupStyle}>
           <label className="input-label" style={labelStyle}>{t('nomina.form.hoursPerMonth')}</label>
-          <input type="number" step="0.01" name="hoursPerMonth" className="input-field" style={inputStyle} value={formData.hoursPerMonth} onChange={handleNumber} />
+          <div className="input-field" style={{ ...inputStyle, background: 'var(--bg-tertiary)', fontWeight: '600', color: 'var(--accent-primary)' }}>
+            {formData.hoursPerMonth} h
+          </div>
+          <div style={{ fontSize: '0.65rem', color: 'var(--text-tertiary)', marginTop: '0.25rem' }}>
+            {t('nomina.form.autoCalculated')} ({t('nomina.form.hoursPerWeek')} x 4,33)
+          </div>
         </div>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
