@@ -27,7 +27,7 @@
     "ctaNomina": "Probar el Generador de Nominas",
     "ctaGuide": "Leer la Guia de Contratacion 2026",
     "modulesTitle": "Modulos Disponibles",
-    "modulesCount": "2 Disponibles",
+    "modulesCount": "3 Disponibles",
     "nomina": {
       "title": "Nomina Empleada de Hogar",
       "description": "Genera nominas oficiales para tu empleada de hogar. Calcula automaticamente las cotizaciones a la Seguridad Social, MEI, Desempleo y el salario neto segun la normativa 2026."
@@ -292,6 +292,202 @@
         "boe": "BOE — Boletin Oficial del Estado (legislacion, actualizaciones del SMI)",
         "segSocial": "Telefono Seg. Social — Llama al 901 50 20 50 para consultas sobre SS",
         "clave": "Cl@ve — Sistema de identidad digital para acceder a servicios del gobierno"
+      }
+    }
+  },
+  "modelo149": {
+    "pageTitle": "Ley Beckham",
+    "pageHighlight": "Asistente Modelo 149",
+    "pageSubtitle": "Prepara tu solicitud de la Ley Beckham paso a paso. Explicamos cada campo para que puedas presentarlo con confianza en la web de la AEAT.",
+    "savingsNote": "Las gestorias cobran 500-1.500 EUR por esto. Hazlo tu mismo gratis.",
+    "guide": {
+      "whatIs": {
+        "title": "Que es la Ley Beckham?",
+        "p1": "La Ley Beckham (oficialmente: Regimen Especial de Trabajadores Desplazados) permite a los nuevos residentes en Espana pagar un tipo fijo del 24% en lugar de la escala progresiva (19-47%) durante 6 anos.",
+        "p2": "Se aplica a las rentas del trabajo de fuente espanola hasta 600.000 EUR. Por encima, el tipo es del 47%. Las rentas no laborales del extranjero (dividendos, alquileres) estan en gran medida exentas.",
+        "p3": "Para solicitarlo, se presenta el Modelo 149 ante la Agencia Tributaria (AEAT) en un plazo de 6 meses desde el alta en la Seguridad Social."
+      },
+      "eligibility": {
+        "title": "Puedo acogermo?",
+        "subtitle": "Responde estas preguntas para verificar si cumples los requisitos:",
+        "q1": "No has sido residente fiscal en Espana en los ultimos 5 anos?",
+        "q2": "Te has trasladado a Espana por trabajo, negocio o actividad cualificada?",
+        "q3": "Te diste de alta en la Seguridad Social hace menos de 6 meses?",
+        "q4": "Tu participacion en cualquier empresa espanola es inferior al 25%?",
+        "resultYes": "Probablemente cumples los requisitos para la Ley Beckham! Usa el formulario de abajo para preparar tu Modelo 149.",
+        "resultNo": "Segun tus respuestas, es posible que no cumplas los requisitos. Revisa los detalles a continuacion o consulta a un asesor fiscal.",
+        "resultPartial": "Es posible que cumplas los requisitos, pero algunas condiciones necesitan verificacion. Revisa los detalles."
+      },
+      "deadline": {
+        "title": "Cuando presentar",
+        "p1": "Debes presentar el Modelo 149 en un plazo de 6 meses desde tu alta en la Seguridad Social. Este plazo es absoluto — el Tribunal Supremo confirmo que incluso un dia de retraso supone la denegacion permanente.",
+        "calculator": "Introduce tu fecha de alta en la SS para verificar tu plazo:",
+        "daysLeft": "dias restantes",
+        "expired": "PLAZO VENCIDO",
+        "deadlineDate": "Tu fecha limite es"
+      },
+      "documents": {
+        "title": "Documentacion necesaria",
+        "p1": "Antes de presentar el formulario, debes subir la documentacion acreditativa al portal de la AEAT y obtener un codigo de registro (CSV). Necesitaras este codigo para el formulario.",
+        "allTitle": "Para TODOS los solicitantes",
+        "all1": "Pasaporte en vigor",
+        "all2": "NIE (Numero de Identificacion de Extranjero)",
+        "all3": "Certificado de alta en la Seguridad Social",
+        "all4": "Certificado de no residencia en Espana en los ultimos 5 anos",
+        "employmentTitle": "Si eres empleado por cuenta ajena",
+        "employment1": "Contrato de trabajo",
+        "employment2": "Certificado del empleador con fecha de inicio y ubicacion",
+        "directorTitle": "Si eres administrador de empresa",
+        "director1": "Documentos de constitucion de la empresa",
+        "director2": "Acreditacion del nombramiento como administrador",
+        "director3": "Documentacion de participacion inferior al 25%"
+      },
+      "howToSubmit": {
+        "title": "Como presentar",
+        "step1": "Reune toda la documentacion necesaria (ver lista anterior)",
+        "step2": "Accede a la sede electronica de la AEAT y sube tus documentos en 'Modelo 149 - Aportar documentacion'. Guarda el codigo CSV que recibiras.",
+        "step3": "Accede al formulario Modelo 149 en la sede electronica (requiere certificado digital o Cl@ve)",
+        "step4": "Completa cada seccion usando el formulario de preparacion de abajo como referencia",
+        "step5": "Haz clic en 'Validar' y luego en 'Firmar y Enviar' para presentar",
+        "step6": "Descarga el PDF de justificante de presentacion. La resolucion suele tardar de 2 a 8 semanas."
+      },
+      "mistakes": {
+        "title": "Errores comunes a evitar",
+        "m1": "No cumplir el plazo de 6 meses — es absoluto e improrrogable",
+        "m2": "No subir documentos ANTES de presentar — necesitas el codigo CSV primero",
+        "m3": "Fecha de inicio incorrecta — el plazo empieza desde el alta en la SS, no desde la llegada",
+        "m4": "Administrador con 25%+ de participacion — queda descalificado",
+        "m5": "No presentar el Modelo 030 antes — puede que necesites darte de alta en la AEAT",
+        "m6": "No avisar al empleador — debe retener al 24% fijo",
+        "m7": "No presentar el Modelo 151 anualmente — los beneficiarios de Beckham usan el 151, no el 100"
+      },
+      "afterApproval": {
+        "title": "Despues de la aprobacion",
+        "p1": "Una vez aprobado (normalmente 2-8 semanas), debes:",
+        "a1": "Entregar el certificado de aprobacion a tu empleador para la retencion correcta del 24%",
+        "a2": "Presentar las declaraciones anuales con el Modelo 151 (no el Modelo 100 estandar)",
+        "a3": "Declarar activos en el extranjero superiores a 50.000 EUR mediante el Modelo 720",
+        "a4": "Pagar el Impuesto sobre el Patrimonio sobre activos mundiales (Beckham NO te exime de esto)",
+        "a5": "El regimen dura 6 anos en total (ano de llegada + 5 mas). Despues, no puedes volver a solicitarlo durante 5 anos."
+      }
+    },
+    "form": {
+      "title": "Prepara tu Modelo 149",
+      "subtitle": "Completa tus datos a continuacion. Cada campo incluye una explicacion de que introducir. Usa el resumen final como referencia al presentar en la web de la AEAT.",
+      "step": "Paso",
+      "of": "de",
+      "next": "Siguiente",
+      "back": "Atras",
+      "steps": {
+        "s1": "Tipo de contribuyente",
+        "s2": "Tus datos",
+        "s3": "Motivo",
+        "s4": "Tu situacion",
+        "s5": "Fechas",
+        "s6": "Resumen"
+      },
+      "taxpayerType": {
+        "title": "Eres el contribuyente principal o asociado?",
+        "primary": "Contribuyente principal",
+        "primaryDesc": "Soy la persona que se traslado a Espana por trabajo/negocio",
+        "associated": "Contribuyente asociado",
+        "associatedDesc": "Soy el conyuge, progenitor o hijo/a de un contribuyente principal",
+        "primaryNif": "NIF del contribuyente principal",
+        "primaryName": "Nombre completo del contribuyente principal",
+        "primaryRef": "Numero de justificante del Modelo 149 del principal",
+        "primaryRefHelp": "El numero de recibo de su presentacion del Modelo 149"
+      },
+      "details": {
+        "title": "Tus datos personales",
+        "nif": "NIF / NIE",
+        "nifHelp": "Tu numero de identificacion fiscal espanol (NIE para extranjeros). Se encuentra en tu tarjeta TIE.",
+        "apellidos": "Apellidos",
+        "apellidosHelp": "Los dos apellidos tal como aparecen en tu NIE/pasaporte",
+        "nombre": "Nombre",
+        "telefonoFijo": "Telefono fijo (opcional)",
+        "telefonoMovil": "Telefono movil",
+        "addressTitle": "Direccion de notificaciones en Espana",
+        "addressHelp": "Donde la AEAT enviara la correspondencia sobre tu solicitud",
+        "tipoVia": "Tipo de via",
+        "nombreVia": "Nombre de la via",
+        "numero": "Numero",
+        "bloque": "Bloque",
+        "portal": "Portal",
+        "escalera": "Escalera",
+        "planta": "Planta",
+        "puerta": "Puerta",
+        "codigoPostal": "Codigo postal",
+        "municipio": "Municipio",
+        "provincia": "Provincia"
+      },
+      "purpose": {
+        "title": "Motivo de la comunicacion",
+        "option": "Opcion por el regimen (nueva solicitud)",
+        "optionDesc": "Quiero acogerme al regimen especial de la Ley Beckham",
+        "renunciation": "Renuncia al regimen",
+        "renunciationDesc": "Quiero renunciar voluntariamente al regimen de la Ley Beckham",
+        "exclusion": "Comunicar exclusion",
+        "exclusionDesc": "Ya no cumplo los requisitos y debo comunicarlo",
+        "endDisplacement": "Fin del desplazamiento",
+        "endDisplacementDesc": "Me voy de Espana y finalizo mi desplazamiento",
+        "docCode": "Codigo de registro de documentacion (CSV)",
+        "docCodeHelp": "Debes subir la documentacion acreditativa a la AEAT PRIMERO y obtener este codigo. Accede a sede electronica > 'Modelo 149 - Aportar documentacion complementaria'.",
+        "exclusionDate": "Fecha de incumplimiento de las condiciones",
+        "exclusionReason": "Causa de exclusion",
+        "endDate": "Fecha de fin del desplazamiento"
+      },
+      "situation": {
+        "title": "Tu situacion en Espana",
+        "categoryLabel": "Por que te trasladaste a Espana?",
+        "employment": "Contrato de trabajo",
+        "employmentDesc": "Tengo un empleo con una empresa espanola o fui trasladado aqui",
+        "director": "Administrador de empresa",
+        "directorDesc": "Soy administrador de una empresa espanola (participacion inferior al 25%)",
+        "entrepreneur": "Emprendedor",
+        "entrepreneurDesc": "Estoy iniciando una actividad empresarial innovadora en Espana",
+        "professional": "Profesional altamente cualificado",
+        "professionalDesc": "Presto servicios profesionales a una empresa emergente espanola",
+        "research": "Investigacion / Innovacion / Formacion",
+        "researchDesc": "Participo en actividades de I+D, innovacion o formacion",
+        "empType": "Tipo de relacion laboral",
+        "newJob": "Nueva relacion laboral iniciada en Espana",
+        "transfer": "Desplazamiento ordenado por mi empleador actual",
+        "remote": "Teletrabajo / nomada digital (no ordenado por el empleador)",
+        "employerNif": "NIF/CIF del empleador",
+        "employerName": "Nombre del empleador",
+        "dirType": "Tipo de administracion",
+        "dirStandard": "Administrador de empresa estandar",
+        "dirPatrimonial": "Administrador de entidad patrimonial",
+        "entityNif": "NIF de la entidad/empresa",
+        "entityName": "Nombre de la entidad/empresa"
+      },
+      "dates": {
+        "title": "Fechas y antecedentes",
+        "entryDate": "Fecha de entrada en Espana",
+        "entryDateHelp": "Cuando llegaste fisicamente a Espana (comprueba sellos del pasaporte o registros de vuelo)",
+        "activityStart": "Fecha de inicio de actividad (alta SS)",
+        "activityStartHelp": "La fecha de tu certificado de alta en la Seguridad Social. Esto activa el plazo de 6 meses.",
+        "lastResidence": "Ultimo pais de residencia fiscal",
+        "lastResidenceHelp": "El pais donde eras residente fiscal antes de trasladarte a Espana",
+        "nationality": "Pais de nacionalidad",
+        "associatedRelation": "Tu relacion con el contribuyente principal",
+        "spouse": "Conyuge",
+        "parent": "Progenitor de los hijos del contribuyente principal",
+        "child": "Hijo/a del contribuyente principal",
+        "childDob": "Fecha de nacimiento del hijo/a",
+        "childDisability": "El hijo/a tiene discapacidad reconocida"
+      },
+      "review": {
+        "title": "Tu hoja de resumen del Modelo 149",
+        "subtitle": "Usa esto como referencia al completar el formulario oficial en la web de la AEAT.",
+        "downloadPdf": "Descargar resumen PDF",
+        "goToAeat": "Ir a la AEAT a presentar",
+        "aeatUrl": "https://sede.agenciatributaria.gob.es/Sede/procedimientoini/G606.shtml",
+        "section1": "Seccion 1: Contribuyente",
+        "section2": "Seccion 2: Domicilio",
+        "section3": "Seccion 3: Motivo",
+        "section4": "Seccion 4: Situacion y fechas",
+        "box": "Casilla"
       }
     }
   }

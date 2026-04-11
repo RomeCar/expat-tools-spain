@@ -65,18 +65,20 @@ export default function LandingPage() {
             </div>
           </Link>
 
-          <div className="glass-card" style={{ opacity: 0.6, cursor: 'not-allowed', height: '100%' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-              <div style={{ background: 'var(--bg-tertiary)', padding: '1rem', borderRadius: '0.75rem', display: 'inline-flex' }}>
-                <FileText size={28} style={{ color: 'var(--text-secondary)' }} />
+          <Link to="/tools/modelo149" style={{ color: 'inherit' }}>
+            <div className="glass-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                <div style={{ background: 'var(--bg-tertiary)', padding: '1rem', borderRadius: '0.75rem', display: 'inline-flex' }}>
+                  <FileText size={28} style={{ color: 'var(--accent-primary)' }} />
+                </div>
+                <span style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--success)' }}>{t('common.tool')}</span>
               </div>
-              <span style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-tertiary)' }}>{t('common.comingSoon')}</span>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{t('landing.modelo149.title')}</h3>
+              <p style={{ color: 'var(--text-secondary)', flexGrow: 1 }}>
+                {t('landing.modelo149.description')}
+              </p>
             </div>
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{t('landing.modelo149.title')}</h3>
-            <p style={{ color: 'var(--text-secondary)' }}>
-              {t('landing.modelo149.description')}
-            </p>
-          </div>
+          </Link>
         </div>
       </section>
     </div>

@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
 import NominaTool from './pages/NominaTool';
 import GuideDomestica from './pages/GuideDomestica';
+import Modelo149 from './pages/Modelo149';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<LandingPage />} />
             <Route path="guides/domestica" element={<GuideDomestica />} />
             <Route path="tools/nomina" element={<NominaTool />} />
+            <Route path="tools/modelo149" element={<Modelo149 />} />
           </Route>
         </Routes>
       </Router>

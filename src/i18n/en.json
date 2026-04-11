@@ -27,7 +27,7 @@
     "ctaNomina": "Try the Nomina Generator",
     "ctaGuide": "Read the 2026 Hiring Guide",
     "modulesTitle": "Available Modules",
-    "modulesCount": "2 Available",
+    "modulesCount": "3 Available",
     "nomina": {
       "title": "Domestic Worker Nomina",
       "description": "Generate official payslips (nominas) for your domestic worker. Automatically calculates Seguridad Social contributions, MEI, Desempleo, and net payouts based on 2026 regulations."
@@ -292,6 +292,202 @@
         "boe": "BOE — Official State Gazette (legislation, SMI updates)",
         "segSocial": "Seg. Social Phone — Call 901 50 20 50 for SS questions",
         "clave": "Cl@ve — Digital identity system for accessing government services"
+      }
+    }
+  },
+  "modelo149": {
+    "pageTitle": "Beckham Law",
+    "pageHighlight": "Modelo 149 Assistant",
+    "pageSubtitle": "Prepare your Beckham Law application step by step. We explain every field so you can file with confidence on AEAT's website.",
+    "savingsNote": "Gestorias charge 500-1,500 EUR for this. Do it yourself for free.",
+    "guide": {
+      "whatIs": {
+        "title": "What is the Beckham Law?",
+        "p1": "The Beckham Law (officially: Regimen Especial de Trabajadores Desplazados) lets new residents in Spain pay a flat 24% income tax rate instead of the progressive scale (19-47%) for 6 years.",
+        "p2": "It applies to Spanish-sourced employment income up to 600,000 EUR. Above that, the rate is 47%. Foreign non-employment income (dividends, rental income from abroad) is largely exempt.",
+        "p3": "To apply, you file Modelo 149 with the Agencia Tributaria (AEAT) within 6 months of your Social Security registration."
+      },
+      "eligibility": {
+        "title": "Am I Eligible?",
+        "subtitle": "Answer these questions to check if you qualify:",
+        "q1": "Have you been a NON-resident of Spain for the last 5 tax years?",
+        "q2": "Have you moved to Spain due to a job, business, or qualifying activity?",
+        "q3": "Did you register with Social Security less than 6 months ago?",
+        "q4": "Is your ownership in any Spanish company below 25%?",
+        "resultYes": "You likely qualify for the Beckham Law! Use the form below to prepare your Modelo 149.",
+        "resultNo": "Based on your answers, you may not qualify. Review the specific requirements below or consult a tax advisor.",
+        "resultPartial": "You may qualify but some conditions need verification. Review the details below."
+      },
+      "deadline": {
+        "title": "When to Submit",
+        "p1": "You must file Modelo 149 within 6 months of your Social Security registration date. This deadline is absolute — the Supreme Court confirmed that even one day late means permanent denial.",
+        "calculator": "Enter your SS registration date to check your deadline:",
+        "daysLeft": "days remaining",
+        "expired": "DEADLINE EXPIRED",
+        "deadlineDate": "Your deadline is"
+      },
+      "documents": {
+        "title": "Required Documents",
+        "p1": "Before filing, you must upload supporting documents to AEAT's portal and get a registration code (CSV). You'll need this code for the form.",
+        "allTitle": "For ALL applicants",
+        "all1": "Valid passport",
+        "all2": "NIE (Numero de Identificacion de Extranjero)",
+        "all3": "Social Security registration certificate",
+        "all4": "Certificate of non-residence in Spain for the last 5 years",
+        "employmentTitle": "If employed (contract)",
+        "employment1": "Employment contract",
+        "employment2": "Employer certificate confirming start date and location",
+        "directorTitle": "If company director",
+        "director1": "Company registration documents",
+        "director2": "Proof of administrator appointment",
+        "director3": "Documentation showing ownership below 25%"
+      },
+      "howToSubmit": {
+        "title": "How to Submit",
+        "step1": "Gather all required documents (see list above)",
+        "step2": "Go to AEAT sede electronica and upload your documents under 'Modelo 149 - Aportar documentacion'. Save the CSV registration code you receive.",
+        "step3": "Access the Modelo 149 form on sede electronica (requires digital certificate or Cl@ve)",
+        "step4": "Fill in each section using the preparation form below as your reference",
+        "step5": "Click 'Validar' then 'Firmar y Enviar' to submit",
+        "step6": "Download the proof of submission PDF. Resolution typically takes 2-8 weeks."
+      },
+      "mistakes": {
+        "title": "Common Mistakes to Avoid",
+        "m1": "Missing the 6-month deadline — it is absolute and non-negotiable",
+        "m2": "Not uploading documents BEFORE filing — you need the CSV code first",
+        "m3": "Wrong start date — the clock starts from SS registration, not arrival",
+        "m4": "Director with 25%+ ownership — you are disqualified",
+        "m5": "Not filing Modelo 030 first — you may need AEAT registration before filing 149",
+        "m6": "Forgetting to notify your employer — they need to withhold at 24% flat",
+        "m7": "Not filing Modelo 151 annually — Beckham beneficiaries use 151, not 100"
+      },
+      "afterApproval": {
+        "title": "After Approval",
+        "p1": "Once approved (typically 2-8 weeks), you must:",
+        "a1": "Provide the approval certificate to your employer for correct 24% withholding",
+        "a2": "File annual tax returns using Modelo 151 (not the standard Modelo 100)",
+        "a3": "Declare foreign assets over 50,000 EUR via Modelo 720",
+        "a4": "Pay Wealth Tax on worldwide assets (Beckham does NOT exempt you from this)",
+        "a5": "The regime lasts 6 years total (year of arrival + 5 more). After it ends, you cannot reapply for 5 years."
+      }
+    },
+    "form": {
+      "title": "Prepare Your Modelo 149",
+      "subtitle": "Fill in your details below. Each field includes an explanation of what to enter. Use the summary at the end as a reference when filing on AEAT's website.",
+      "step": "Step",
+      "of": "of",
+      "next": "Next",
+      "back": "Back",
+      "steps": {
+        "s1": "Taxpayer Type",
+        "s2": "Your Details",
+        "s3": "Purpose",
+        "s4": "Your Situation",
+        "s5": "Dates",
+        "s6": "Review"
+      },
+      "taxpayerType": {
+        "title": "Are you the primary or associated taxpayer?",
+        "primary": "Primary taxpayer",
+        "primaryDesc": "I am the person who moved to Spain for work/business",
+        "associated": "Associated taxpayer",
+        "associatedDesc": "I am the spouse, parent, or child of a primary taxpayer",
+        "primaryNif": "Primary taxpayer's NIF",
+        "primaryName": "Primary taxpayer's full name",
+        "primaryRef": "Primary taxpayer's Modelo 149 reference number",
+        "primaryRefHelp": "The receipt number from their Modelo 149 filing"
+      },
+      "details": {
+        "title": "Your Personal Details",
+        "nif": "NIF / NIE",
+        "nifHelp": "Your Spanish tax identification number (NIE for foreigners). Found on your TIE card.",
+        "apellidos": "Surnames (Apellidos)",
+        "apellidosHelp": "Both surnames as they appear on your NIE/passport",
+        "nombre": "First name (Nombre)",
+        "telefonoFijo": "Landline phone (optional)",
+        "telefonoMovil": "Mobile phone",
+        "addressTitle": "Notification Address in Spain",
+        "addressHelp": "Where AEAT will send correspondence about your application",
+        "tipoVia": "Street type",
+        "nombreVia": "Street name",
+        "numero": "Number",
+        "bloque": "Block",
+        "portal": "Portal",
+        "escalera": "Staircase",
+        "planta": "Floor",
+        "puerta": "Door",
+        "codigoPostal": "Postal code",
+        "municipio": "Municipality",
+        "provincia": "Province"
+      },
+      "purpose": {
+        "title": "Purpose of This Filing",
+        "option": "Applying for the regime (new application)",
+        "optionDesc": "I want to opt into the Beckham Law special tax regime",
+        "renunciation": "Renouncing the regime",
+        "renunciationDesc": "I want to voluntarily leave the Beckham Law regime",
+        "exclusion": "Reporting exclusion",
+        "exclusionDesc": "I no longer meet the requirements and must report it",
+        "endDisplacement": "End of displacement",
+        "endDisplacementDesc": "I am leaving Spain and ending my displacement",
+        "docCode": "Document registration code (CSV)",
+        "docCodeHelp": "You must upload your supporting documents to AEAT FIRST and get this code. Go to sede electronica > 'Modelo 149 - Aportar documentacion complementaria'.",
+        "exclusionDate": "Date conditions were no longer met",
+        "exclusionReason": "Reason for exclusion",
+        "endDate": "Date displacement ended"
+      },
+      "situation": {
+        "title": "Your Situation in Spain",
+        "categoryLabel": "Why did you move to Spain?",
+        "employment": "Employment contract",
+        "employmentDesc": "I have a job with a Spanish employer or was transferred here",
+        "director": "Company director / administrator",
+        "directorDesc": "I am a director of a Spanish company (ownership must be below 25%)",
+        "entrepreneur": "Entrepreneur",
+        "entrepreneurDesc": "I am starting an innovative business activity in Spain",
+        "professional": "Highly qualified professional",
+        "professionalDesc": "I provide professional services to a Spanish startup company",
+        "research": "Research / Innovation / Training",
+        "researchDesc": "I am involved in R&D, innovation, or training activities",
+        "empType": "Type of employment",
+        "newJob": "New employment relationship started in Spain",
+        "transfer": "Transferred by my current employer to Spain",
+        "remote": "Remote work / digital nomad (not ordered by employer)",
+        "employerNif": "Employer's NIF/CIF",
+        "employerName": "Employer's name",
+        "dirType": "Type of directorship",
+        "dirStandard": "Standard company director",
+        "dirPatrimonial": "Director of a patrimonial (asset-holding) entity",
+        "entityNif": "Entity/Company NIF",
+        "entityName": "Entity/Company name"
+      },
+      "dates": {
+        "title": "Dates & Background",
+        "entryDate": "Date of entry into Spain",
+        "entryDateHelp": "When you physically arrived in Spain (check passport stamps or flight records)",
+        "activityStart": "Date of activity start (SS registration)",
+        "activityStartHelp": "The date on your Social Security registration certificate. This is what triggers the 6-month deadline.",
+        "lastResidence": "Last country of tax residence",
+        "lastResidenceHelp": "The country where you were a tax resident before moving to Spain",
+        "nationality": "Country of nationality",
+        "associatedRelation": "Your relationship to the primary taxpayer",
+        "spouse": "Spouse",
+        "parent": "Parent of primary taxpayer's children",
+        "child": "Child of primary taxpayer",
+        "childDob": "Child's date of birth",
+        "childDisability": "Child has recognized disability"
+      },
+      "review": {
+        "title": "Your Modelo 149 Summary Sheet",
+        "subtitle": "Use this as a reference when filling out the official form on AEAT's website.",
+        "downloadPdf": "Download Summary PDF",
+        "goToAeat": "Go to AEAT to File",
+        "aeatUrl": "https://sede.agenciatributaria.gob.es/Sede/procedimientoini/G606.shtml",
+        "section1": "Section 1: Taxpayer",
+        "section2": "Section 2: Address",
+        "section3": "Section 3: Purpose",
+        "section4": "Section 4: Situation & Dates",
+        "box": "Box"
       }
     }
   }
