@@ -1,5 +1,5 @@
-import { REGULATIONS_2026, findTramo } from '../config/regulations';
-import { round2 } from './formatters';
+import { REGULATIONS_2026, findTramo } from '../config/regulations.js';
+import { round2 } from './formatters.js';
 
 const R = REGULATIONS_2026;
 

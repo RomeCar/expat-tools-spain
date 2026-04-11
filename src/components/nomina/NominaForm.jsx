@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { REGULATIONS_2026 } from '../../config/regulations';
 import { formatCurrency } from '../../utils/formatters';
 import { FileText, ChevronDown, ChevronUp, Settings } from 'lucide-react';
 
