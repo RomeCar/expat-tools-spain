@@ -32,7 +32,7 @@ function Checklist({ items }) {
 function StepList({ items }) {
   return (
     <ol style={{ paddingLeft: '1.25rem', margin: '0.75rem 0', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-      {items.map((item, i) => <li key={i} style={{ marginBottom: '0.35rem' }}>{item}</li>)}
+      {items.map((item, i) => <li key={i} style={{ marginBottom: '0.35rem' }} dangerouslySetInnerHTML={{ __html: item }} />)}
     </ol>
   );
 }
