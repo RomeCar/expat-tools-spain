@@ -1,214 +1,286 @@
 .nomina-doc {
-  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-family: 'Helvetica', 'Arial', sans-serif;
   background: #ffffff;
-  color: #000000;
+  color: #1f2937;
   width: 100%;
   max-width: 210mm;
   margin: 0 auto;
-  font-size: 11px;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  font-size: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+  padding: 32px 36px;
+  line-height: 1.5;
 }
 
-.nomina-header {
-  background: #1e3a5f;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 14px;
-  text-align: center;
-  font-size: 15px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
-
-.nomina-data-grid {
+/* Header */
+.nomina-doc-header {
   display: flex;
-  border-bottom: 2px solid #ffffff;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #2563eb;
+  margin-bottom: 24px;
 }
 
-.nomina-data-col {
-  flex: 1;
+.nomina-doc-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #1f2937;
+  margin: 0;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.nomina-doc-header .nomina-period-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+/* Info Grid (Employer / Worker) */
+.nomina-info-grid {
   display: grid;
-  grid-template-columns: minmax(90px, 28%) 72%;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.nomina-label {
-  background: #1e3a5f;
-  color: #ffffff;
-  padding: 4px 8px;
-  font-weight: bold;
+.nomina-info-col h3 {
   font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2563eb;
+  margin: 0 0 8px 0;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.nomina-info-row {
   display: flex;
-  align-items: center;
-}
-
-.nomina-value {
-  background: #FDF7E5;
-  color: #000000;
-  padding: 4px 8px;
-  font-size: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.nomina-period-bar {
-  display: flex;
-  background: #3d5a80;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 11px;
-}
-
-.nomina-period-bar > div {
-  padding: 6px 12px;
-}
-
-.nomina-period-main {
-  flex: 1;
-  text-align: center;
-}
-
-.nomina-period-detail {
-  background: #1e3a5f;
-  border-left: 1px solid #5a7da8;
-}
-
-.nomina-period-value {
-  background: #FDF7E5;
-  color: #000;
-  width: 80px;
-  text-align: center;
-}
-
-.nomina-section-header {
-  background: #2d4a6f;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 11px;
-}
-
-.nomina-subsection-header {
-  background: #4a6d94;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 4px 10px;
-  font-size: 10px;
-}
-
-.nomina-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.nomina-table th {
-  background: #3d5a80;
-  color: #ffffff;
-  padding: 5px 8px;
-  font-weight: bold;
-  font-size: 10px;
-}
-
-.nomina-table th.text-left { text-align: left; }
-.nomina-table th.text-right { text-align: right; }
-
-.nomina-table td {
-  padding: 4px 8px;
-  border: 1px solid #e8ecf0;
+  justify-content: space-between;
+  padding: 3px 0;
   font-size: 10.5px;
 }
 
-.nomina-table td.text-right {
+.nomina-info-label {
+  color: #6b7280;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.nomina-info-value {
+  color: #1f2937;
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Period Line */
+.nomina-period-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.nomina-period-line strong {
+  color: #1f2937;
+}
+
+/* Section Heading */
+.nomina-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #2563eb;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Data Rows */
+.nomina-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  font-size: 10.5px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.nomina-line:last-child {
+  border-bottom: none;
+}
+
+.nomina-line-label {
+  color: #4b5563;
+}
+
+.nomina-line-value {
+  font-weight: 500;
+  color: #1f2937;
+  text-align: right;
+  min-width: 80px;
+}
+
+.nomina-line-sub {
+  font-size: 9.5px;
+  color: #9ca3af;
+}
+
+/* Subtotal Row */
+.nomina-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0 4px;
+  margin-top: 4px;
+  border-top: 1px solid #d1d5db;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+/* Deductions table */
+.nomina-ded-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 60px 80px;
+  gap: 4px;
+  padding: 5px 0;
+  font-size: 10.5px;
+  border-bottom: 1px solid #f3f4f6;
+  align-items: baseline;
+}
+
+.nomina-ded-header {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 4px 0 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nomina-ded-row .text-right {
   text-align: right;
 }
 
-.nomina-table tr:nth-child(even) td {
-  background: #f8f9fb;
+/* HERO: Net Pay */
+.nomina-hero {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nomina-row-total td {
-  background: #e2e8f0 !important;
-  font-weight: bold;
-}
-
-.nomina-row-total td:first-child {
-  text-align: right;
-}
-
-.nomina-row-deducir td {
-  background: #4a5568 !important;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.nomina-row-deducir td:first-child {
-  text-align: right;
-}
-
-.nomina-row-liquido td {
-  background: #1a7a6d !important;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 8px 12px;
+.nomina-hero-label {
   font-size: 12px;
-}
-
-.nomina-row-liquido td:first-child {
-  text-align: right;
+  font-weight: 600;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1e40af;
 }
 
-.nomina-row-employer-total td {
-  background: #3d5a80 !important;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: uppercase;
+.nomina-hero-amount {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3a8a;
 }
 
-.nomina-row-employer-total td:first-child {
-  text-align: right;
-}
-
-.nomina-row-cargo td {
-  background: #1a7a6d !important;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 6px 12px;
-}
-
-.nomina-row-cargo td:first-child {
-  text-align: right;
-  text-transform: uppercase;
-}
-
-.nomina-row-coste td {
-  background: #1e3a5f !important;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 6px 12px;
-  text-transform: uppercase;
-}
-
-.nomina-row-coste td:first-child {
-  text-align: right;
-}
-
-.nomina-row-coste td:last-child {
-  background: #FDF7E5 !important;
-  color: #000;
-}
-
+/* Signatures */
 .nomina-signatures {
   display: flex;
   justify-content: space-between;
-  padding: 18px 24px;
+  padding: 12px 0 20px;
   font-size: 10px;
+  color: #6b7280;
 }
 
+.nomina-sig-line {
+  width: 120px;
+  border-bottom: 1px solid #d1d5db;
+  margin-top: 24px;
+}
+
+/* Separator */
+.nomina-separator {
+  border: none;
+  border-top: 1px dashed #d1d5db;
+  margin: 16px 0;
+}
+
+/* Employer Costs (secondary section) */
+.nomina-secondary-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+  margin: 0 0 8px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nomina-emp-row {
+  display: grid;
+  grid-template-columns: 1fr 70px 60px 50px 80px;
+  gap: 4px;
+  padding: 4px 0;
+  font-size: 10px;
+  color: #6b7280;
+  border-bottom: 1px solid #f3f4f6;
+  align-items: baseline;
+}
+
+.nomina-emp-header {
+  font-weight: 600;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #9ca3af;
+  padding: 4px 0 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nomina-emp-row .text-right {
+  text-align: right;
+}
+
+/* Summary totals in employer section */
+.nomina-emp-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 10.5px;
+  color: #4b5563;
+  border-top: 1px solid #d1d5db;
+}
+
+.nomina-emp-total.primary {
+  font-weight: 700;
+  font-size: 11px;
+  color: #1f2937;
+  padding: 8px 0 4px;
+  border-top: 2px solid #1f2937;
+}
+
+/* Footer */
 .nomina-footer {
   text-align: center;
-  margin: 10px 0 8px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
   font-size: 8.5px;
-  font-style: italic;
-  color: #718096;
+  color: #9ca3af;
 }
