@@ -49,6 +49,7 @@ export default function GuideDomestica() {
 
   const tocSections = [
     { id: 'who-needs', label: s.whoNeeds.title },
+    { id: 'arraigo', label: s.arraigo.title },
     { id: 'documentation', label: s.documentation.title },
     { id: 'ccc', label: s.ccc.title },
     { id: 'contract', label: s.contract.title },
@@ -130,7 +131,36 @@ export default function GuideDomestica() {
           </div>
         </Section>
 
-        {/* 2. Documentation */}
+        {/* 2. Arraigo / Pending Residency */}
+        <Section id="arraigo" icon={AlertTriangle} title={s.arraigo.title}>
+          <div style={{ background: 'var(--bg-tertiary)', padding: '1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--accent-primary)', marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem', lineHeight: 1.6 }}>{s.arraigo.intro}</p>
+          </div>
+
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1rem' }}>{s.arraigo.whatIsTitle}</h3>
+          <P>{s.arraigo.whatIs}</P>
+
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1.25rem' }}>{s.arraigo.sequenceTitle}</h3>
+          <P>{s.arraigo.sequenceIntro}</P>
+          <StepList items={[s.arraigo.step1, s.arraigo.step2, s.arraigo.step3, s.arraigo.step4, s.arraigo.step5]} />
+
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1.25rem' }}>{s.arraigo.whyTitle}</h3>
+          <div style={{ background: 'rgba(239, 68, 68, 0.08)', padding: '1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--danger)', marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem', lineHeight: 1.6 }}>{s.arraigo.why}</p>
+          </div>
+
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1.25rem' }}>{s.arraigo.employerReqsTitle}</h3>
+          <Checklist items={[s.arraigo.req1, s.arraigo.req2, s.arraigo.req3, s.arraigo.req4, s.arraigo.req5]} />
+
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1.25rem' }}>{s.arraigo.docsTitle}</h3>
+          <Checklist items={[s.arraigo.doc1, s.arraigo.doc2, s.arraigo.doc3, s.arraigo.doc4, s.arraigo.doc5, s.arraigo.doc6]} />
+
+          <div style={{ background: 'var(--bg-tertiary)', padding: '0.75rem 1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--warning)', marginTop: '1rem' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{s.arraigo.warning}</p>
+          </div>
+        </Section>
+
+        {/* 3. Documentation */}
         <Section id="documentation" icon={FileText} title={s.documentation.title}>
           <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1rem' }}>{s.documentation.employerTitle}</h3>
           <Checklist items={[s.documentation.employer1, s.documentation.employer2, s.documentation.employer3, s.documentation.employer4]} />
