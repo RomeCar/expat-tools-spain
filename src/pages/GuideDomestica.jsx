@@ -144,6 +144,22 @@ export default function GuideDomestica() {
           <P>{s.arraigo.sequenceIntro}</P>
           <StepList items={[s.arraigo.step1, s.arraigo.step2, s.arraigo.step3, s.arraigo.step4, s.arraigo.step5]} />
 
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1.25rem' }}>{s.arraigo.multiEmployerTitle}</h3>
+          <div style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--success)', marginBottom: '1rem' }}>
+            <P>{s.arraigo.multiEmployerP1}</P>
+            <P>{s.arraigo.multiEmployerP2}</P>
+            <P>{s.arraigo.multiEmployerP3}</P>
+            <div style={{ marginTop: '0.75rem', padding: '0.75rem', background: 'var(--bg-secondary)', borderRadius: '0.375rem', border: '1px solid var(--border-color)' }}>
+              <div style={{ fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>{s.arraigo.multiEmployerExample}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', fontSize: '0.85rem', color: 'var(--text-secondary)', marginLeft: '0.5rem' }}>
+                <div>&bull; {s.arraigo.exampleRow1}</div>
+                <div>&bull; {s.arraigo.exampleRow2}</div>
+                <div>&bull; {s.arraigo.exampleRow3}</div>
+                <div style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px dashed var(--border-color)', fontWeight: '600', color: 'var(--success)' }}>&check; {s.arraigo.exampleTotal}</div>
+              </div>
+            </div>
+          </div>
+
           <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', marginTop: '1.25rem' }}>{s.arraigo.whyTitle}</h3>
           <div style={{ background: 'rgba(239, 68, 68, 0.08)', padding: '1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--danger)', marginBottom: '1rem' }}>
             <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem', lineHeight: 1.6 }}>{s.arraigo.why}</p>
