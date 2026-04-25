@@ -673,6 +673,27 @@
         "m2": "Stopping the SS direct debit — contributions continue during the entire leave",
         "m3": "Not paying days 4-8 — the worker can claim them with interest plus penalties",
         "m4": "Skipping the <strong>C-133</strong> — without it, the INSS denies or delays her benefit indefinitely"
+      },
+      "reference": {
+        "title": "2026 Reference: SMI + Tramos",
+        "intro": "Quick reference for the 2026 minimum wage and the contribution-base brackets the TGSS applies to empleados de hogar. Sourced directly from the BOE — these are the legally binding figures.",
+        "smiTitle": "Minimum Wage (SMI) 2026",
+        "smiHourlyLabel": "Per hour",
+        "smiHourlyHint": "Hourly empleadas de hogar — already includes vacation + pagas extras prorated",
+        "smiMonthlyLabel": "Per month (full-time)",
+        "smiMonthlyHint": "12-pagas equivalent (extras prorated)",
+        "smiSource": "Source: Real Decreto 126/2026, art. 4.2 —",
+        "tramosTitle": "Contribution Base Brackets (Tramos) 2026",
+        "tramosIntro": "TGSS does not contribute on the actual salary — it assigns a fixed monthly base from the bracket your worker's salary falls into. Add prorated pagas extras to her monthly pay before placing her on the scale.",
+        "colTramo": "Tramo",
+        "colSalary": "Monthly salary range (€)",
+        "colBase": "Assigned base (€/month)",
+        "upTo": "Up to",
+        "from": "From",
+        "realSalary": "Actual salary",
+        "tramosSource": "Source: Orden PJC/297/2026 of 30 March 2026 —",
+        "transitionNote": "<strong>If your nómina shows different figures:</strong> some gestorías keep using 2025 values until they update their software for the 30 March 2026 order. Your TGSS direct debit will eventually regularize. For C-133 contribution bases, enter what was actually contributed each month (the figure on your nómina), not the 2026 BOE figure.",
+        "lastVerified": "Data last verified against BOE on {date}."
       }
     },
     "form": {

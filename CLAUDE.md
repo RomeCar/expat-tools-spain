@@ -73,11 +73,18 @@ Reference implementation: [src/components/bajaMedica/C133Form.jsx](src/component
 ### Regulations live in one place
 2026 Social Security data (rates, tramos, SMI) is centralized in [src/config/regulations.js](src/config/regulations.js). **Reuse it. Never duplicate.**
 
+#### Government sources only
+**Every number in `regulations.js` MUST cite a primary government source.** Acceptable: [boe.es](https://www.boe.es), [seg-social.es](https://www.seg-social.es), [agenciatributaria.gob.es](https://www.agenciatributaria.gob.es), [mites.gob.es](https://www.mites.gob.es). Not acceptable: tax-blog summaries, gestoría websites, news articles. They contradict each other, often quote provisional figures from before the BOE order publishes, and lag updates by weeks or months. The BOE is binding; everything else is hearsay.
+
+If a gestoría's nómina disagrees with the BOE figure, **the BOE wins** — the gestoría is most likely behind on a recent order and TGSS will regularize. Note the discrepancy in the UI rather than copying the gestoría's number.
+
+#### Update protocol
 When external regulations change (BOE updates, mid-year SMI bump, contribution rate adjustment):
-1. Update the values in `regulations.js`.
-2. Bump `lastVerified` to the date you verified against the source.
-3. Call out the change in the PR description with the BOE link / reference.
-4. Surface the updated date on relevant guides so users know the data is fresh.
+1. Look up the BOE order or RD on [boe.es/buscar/](https://www.boe.es/buscar/). Read the actual text.
+2. Update the values in `regulations.js` and update the source comment with the BOE article link (e.g. `BOE-A-2026-7296, art. 15`).
+3. Bump `lastVerified` to today's date (UTC YYYY-MM-DD).
+4. Call out the change in the PR description with the BOE link.
+5. Surface the updated date on relevant guides so users know the data is fresh — every page that displays regulatory figures should show "Data last verified: YYYY-MM-DD" with the BOE link beside it.
 
 ## Diacritics / accents in copy
 
