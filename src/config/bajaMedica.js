@@ -74,6 +74,7 @@ export const INITIAL_C133_DATA = {
   firmaDia: '',
   firmaMes: '',
   firmaAnio: new Date().getFullYear().toString(),
+  firmaImage: '', // PNG dataURL of the user-drawn signature, embedded into the official PDF
 };
 
 // How many base rows are required by INSS depending on prestacion + contract type.

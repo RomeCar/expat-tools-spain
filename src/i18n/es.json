@@ -768,11 +768,15 @@
         "observaciones": "Observaciones (opcional)"
       },
       "signature": {
-        "title": "Firma",
+        "title": "Fecha y firma",
+        "dateHelp": "Estos datos van en la linea de fecha: \"En [Localidad] a [Dia] de [Mes] de [Ano]\". La localidad es la ciudad donde firmas — no es tu firma.",
         "localidad": "Localidad",
         "dia": "Dia",
         "mes": "Mes",
-        "anio": "Ano"
+        "anio": "Ano",
+        "signLabel": "Firma aqui (raton o pantalla tactil)",
+        "signHelp": "Insertamos este dibujo en el C-133 oficial sobre la linea \"Firma del empleador\". Aun asi puedes firmar a mano encima sobre el papel si lo prefieres.",
+        "clear": "Borrar"
       },
       "review": {
         "title": "Revisa tu C-133",
