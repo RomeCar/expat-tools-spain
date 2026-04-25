@@ -673,6 +673,27 @@
         "m2": "Cancelar la domiciliacion de las cuotas — se siguen pagando durante toda la baja",
         "m3": "No pagar los dias 4-8 — la trabajadora puede reclamarlos con intereses y recargo",
         "m4": "Saltarse el <strong>C-133</strong> — sin el, el INSS deniega o demora indefinidamente la prestacion"
+      },
+      "reference": {
+        "title": "Referencia 2026: SMI + Tramos",
+        "intro": "Referencia rapida del SMI 2026 y los tramos de cotizacion que la TGSS aplica a empleados de hogar. Fuente: BOE — son las cifras legalmente vinculantes.",
+        "smiTitle": "Salario Minimo (SMI) 2026",
+        "smiHourlyLabel": "Por hora",
+        "smiHourlyHint": "Empleadas de hogar por horas — incluye vacaciones + pagas extras prorrateadas",
+        "smiMonthlyLabel": "Mensual (jornada completa)",
+        "smiMonthlyHint": "Equivalente a 12 pagas (extras prorrateadas)",
+        "smiSource": "Fuente: Real Decreto 126/2026, art. 4.2 —",
+        "tramosTitle": "Tramos de cotizacion 2026",
+        "tramosIntro": "La TGSS no cotiza sobre el salario real — asigna una base fija mensual segun el tramo en el que cae el salario. Suma las pagas extras prorrateadas al salario mensual antes de mirar la tabla.",
+        "colTramo": "Tramo",
+        "colSalary": "Retribucion mensual (€)",
+        "colBase": "Base asignada (€/mes)",
+        "upTo": "Hasta",
+        "from": "Desde",
+        "realSalary": "Salario real",
+        "tramosSource": "Fuente: Orden PJC/297/2026 de 30 de marzo de 2026 —",
+        "transitionNote": "<strong>Si tu nomina muestra cifras distintas:</strong> algunas gestorias siguen usando los valores de 2025 hasta que actualicen su software a la orden del 30 de marzo de 2026. La domiciliacion de la TGSS regularizara mas adelante. Para las bases de cotizacion del C-133, introduce lo realmente cotizado cada mes (la cifra de tu nomina), no la cifra del BOE 2026.",
+        "lastVerified": "Datos verificados con el BOE el {date}."
       }
     },
     "form": {

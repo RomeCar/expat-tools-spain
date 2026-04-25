@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import C133Form from '../components/bajaMedica/C133Form';
 import { findTramo, REGULATIONS_2026 } from '../config/regulations';
 import { formatCurrency } from '../utils/formatters';
-import { CheckCircle, AlertTriangle, FileText, Info, ExternalLink, ChevronRight, List, Stethoscope, Calendar, Coins, Calculator, Send } from 'lucide-react';
+import { CheckCircle, AlertTriangle, FileText, Info, ExternalLink, ChevronRight, List, Stethoscope, Calendar, Coins, Calculator, Send, BookMarked } from 'lucide-react';
 
 function Section({ id, icon: Icon, title, children }) {
   return (
@@ -169,6 +169,7 @@ export default function BajaMedica() {
     { id: 'documents', label: g.documents.title },
     { id: 'after', label: g.after.title },
     { id: 'mistakes', label: g.mistakes.title },
+    { id: 'reference', label: g.reference.title },
     { id: 'form', label: f.title },
   ];
 
@@ -328,6 +329,65 @@ export default function BajaMedica() {
               </li>
             ))}
           </ul>
+        </Section>
+
+        <Section id="reference" icon={BookMarked} title={g.reference.title}>
+          <P>{g.reference.intro}</P>
+
+          <h3 style={{ fontSize: '1.05rem', marginBottom: '0.5rem', marginTop: '1rem' }}>{g.reference.smiTitle}</h3>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+            <div style={{ background: 'var(--bg-tertiary)', padding: '0.75rem 1rem', borderRadius: '0.5rem' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>{g.reference.smiHourlyLabel}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--accent-primary)' }}>{REGULATIONS_2026.smi.hourly.toFixed(2).replace('.', ',')} €/h</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', marginTop: '0.2rem' }}>{g.reference.smiHourlyHint}</div>
+            </div>
+            <div style={{ background: 'var(--bg-tertiary)', padding: '0.75rem 1rem', borderRadius: '0.5rem' }}>
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginBottom: '0.25rem' }}>{g.reference.smiMonthlyLabel}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--accent-primary)' }}>{formatCurrency(REGULATIONS_2026.smi.monthlyFull12)}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', marginTop: '0.2rem' }}>{g.reference.smiMonthlyHint}</div>
+            </div>
+          </div>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', fontStyle: 'italic', marginTop: '0.25rem', marginBottom: '1.5rem' }}>
+            {g.reference.smiSource} <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2026-3815" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)' }}>BOE-A-2026-3815</a>
+          </p>
+
+          <h3 style={{ fontSize: '1.05rem', marginBottom: '0.5rem' }}>{g.reference.tramosTitle}</h3>
+          <P>{g.reference.tramosIntro}</P>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem', marginTop: '0.5rem' }}>
+            <thead>
+              <tr>
+                <th style={{ background: 'var(--bg-tertiary)', padding: '0.5rem 0.75rem', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid var(--border-color)', color: 'var(--text-primary)' }}>{g.reference.colTramo}</th>
+                <th style={{ background: 'var(--bg-tertiary)', padding: '0.5rem 0.75rem', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid var(--border-color)', color: 'var(--text-primary)' }}>{g.reference.colSalary}</th>
+                <th style={{ background: 'var(--bg-tertiary)', padding: '0.5rem 0.75rem', textAlign: 'right', fontWeight: '600', borderBottom: '2px solid var(--border-color)', color: 'var(--text-primary)' }}>{g.reference.colBase}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {REGULATIONS_2026.tramos.map(tr => (
+                <tr key={tr.tramo}>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>{tr.tramo}</td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
+                    {tr.tramo === 1 ? `${g.reference.upTo} ${formatCurrency(tr.max)}` :
+                     tr.tramo === 8 ? `${g.reference.from} ${formatCurrency(tr.min)}` :
+                     `${formatCurrency(tr.min)} – ${formatCurrency(tr.max)}`}
+                  </td>
+                  <td style={{ padding: '0.5rem 0.75rem', borderBottom: '1px solid var(--border-color)', textAlign: 'right', fontWeight: '600', color: 'var(--text-primary)' }}>
+                    {tr.base != null ? formatCurrency(tr.base) : g.reference.realSalary}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', fontStyle: 'italic', marginTop: '0.5rem' }}>
+            {g.reference.tramosSource} <a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)' }}>BOE-A-2026-7296</a>, art. 15.
+          </p>
+
+          <div style={{ background: 'var(--bg-tertiary)', padding: '0.75rem 1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--warning)', marginTop: '1rem' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: 1.5 }} dangerouslySetInnerHTML={{ __html: g.reference.transitionNote }} />
+          </div>
+
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', marginTop: '1rem' }}>
+            {g.reference.lastVerified.replace('{date}', REGULATIONS_2026.lastVerified)}
+          </p>
         </Section>
       </div>
 
