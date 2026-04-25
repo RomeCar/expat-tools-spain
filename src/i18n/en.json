@@ -537,14 +537,14 @@
   "bajaMedica": {
     "pageTitle": "Domestic Worker Medical Leave",
     "pageHighlight": "C-133 Employer Certificate",
-    "pageSubtitle": "When your empleada de hogar goes on baja medica, you must issue a C-133 certificate so she can claim her Social Security benefit. We walk you through the process and generate the form for you.",
-    "formNote": "Includes prefilled C-133 PDF",
+    "pageSubtitle": "When your empleada de hogar goes on baja medica, you must issue a <strong>C-133</strong> certificate so she can claim her Social Security benefit. We walk you through the process and generate the form for you.",
+    "formNote": "Includes prefilled <strong>C-133</strong> PDF",
     "guide": {
       "whatIs": {
         "title": "What is the C-133?",
-        "p1": "The C-133 is the official Certificado del Empleador issued by the INSS. It certifies the employment relationship and contribution bases of a domestic worker so she can apply for Social Security benefits — most commonly for medical leave (incapacidad temporal), but also for childbirth/childcare, pregnancy risk, breastfeeding risk, or care of a seriously ill child.",
-        "p2": "Without a signed C-133 from each of her employers, the INSS cannot calculate her benefit. If she works for several households, every employer must issue one.",
-        "p3": "Important: the C-133 does NOT replace the parte de baja from her doctor — it is a separate document the worker must attach to her benefit application."
+        "p1": "The <strong>C-133</strong> is the official <strong>Certificado del Empleador</strong> issued by the INSS. It certifies the employment relationship and contribution bases of a domestic worker so she can apply for Social Security benefits — most commonly for medical leave (incapacidad temporal), but also for childbirth/childcare, pregnancy risk, breastfeeding risk, or care of a seriously ill child.",
+        "p2": "Without a signed <strong>C-133</strong> from each of her employers, the INSS cannot calculate her benefit. If she works for several households, every employer must issue one.",
+        "p3": "Important: the <strong>C-133</strong> does NOT replace the <strong>parte de baja</strong> from her doctor — it is a separate document the worker must attach to her benefit application."
       },
       "whoPays": {
         "title": "Who Pays During Sick Leave?",
@@ -561,12 +561,59 @@
       },
       "employerSteps": {
         "title": "What You (the Employer) Must Do",
-        "intro": "There are 5 things you have to do once your worker hands you her parte de baja medica:",
-        "s1": "<strong>Receive the parte de baja</strong> from the worker. The parte de baja is an official one-page document her doctor (medico de cabecera at her health centre) prints or sends digitally — it states the diagnosis category, the start date of the leave, and the expected duration. She keeps the original for the INSS; you keep a photo or photocopy for your own records (you'll need the start date).",
-        "s2": "<strong>Fill in the C-133</strong> with your data (DNI, CCC, address) and her data (NSS, NIE, contract type, tramo, dates). <a href='#form' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Use the form below</a> to generate it.",
+        "intro": "There are 5 things you have to do once your worker hands you her <strong>parte de baja medica</strong>:",
+        "s1": "<strong>Receive the parte de baja</strong> from the worker. The <strong>parte de baja</strong> is an official one-page document her doctor (medico de cabecera at her health centre) prints or sends digitally — it states the diagnosis category, the start date of the leave, and the expected duration. She keeps the original for the INSS; you keep a photo or photocopy for your own records (you'll need the start date).",
+        "s2": "<strong>Fill in the C-133</strong> with your data (DNI, CCC, address) and her data (NSS, NIE, contract type, tramo, dates). <a href='#form' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Use the form below</a> to generate it. Then <a href='#submit' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>see the submission walkthrough</a> for how to actually send it.",
         "s3": "<strong>Sign the C-133</strong> and give a signed copy to the worker so she can attach it to her INSS application.",
         "s4": "<strong>Pay days 4-8</strong> directly to the worker (60% of the base reguladora) on the next payday. Show it as a separate concept on the nomina, not as ordinary salary. <a href='#example' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>See the worked example below</a>.",
         "s5": "<strong>Keep paying SS contributions</strong> as usual via direct debit. Do not file a baja in IMPORT@SS — the contract is suspended, not terminated."
+      },
+      "calculator": {
+        "title": "Calculator: how much will you pay?",
+        "intro": "Type her monthly gross salary (or her hours/week and hourly rate) and we'll work out exactly what you owe her on days 4-8 — and what the INSS picks up after that. Numbers use 2026 rates.",
+        "tabSalary": "Monthly salary",
+        "tabHours": "Hours/week × rate",
+        "monthlySalary": "Monthly gross salary (EUR)",
+        "hoursPerWeek": "Hours per week",
+        "hourlyRate": "Hourly rate (EUR)",
+        "computedSalary": "Calculated monthly salary",
+        "tramoLabel": "Contribution bracket",
+        "baseDiaria": "Daily base reguladora",
+        "youPay": "You pay (days 4-8)",
+        "inss920": "INSS pays direct (days 9-20, 60%)",
+        "inss2130": "INSS pays direct (days 21+, 75%)",
+        "summaryLabel": "Bottom line:",
+        "summary": "you'll transfer her about {amount} on the next nomina (a one-time amount, no matter how long the baja runs). After day 8, the INSS handles everything."
+      },
+      "submit": {
+        "title": "How to Actually Submit the C-133",
+        "intro": "Once you've filled in and signed the C-133, there are three ways to get it to the INSS. The easiest by far is option A.",
+        "openSede": "Open Sede Electronica",
+        "optionA": {
+          "title": "Option A — She submits it (recommended, 90% of cases)",
+          "p1": "The simplest path: you don't submit anything yourself. The C-133 is part of HER benefit application package — she attaches it as supporting documentation when she files her IT claim.",
+          "s1": "<strong>Print the C-133</strong> (or save the PDF), sign it, and hand a signed copy to your worker. Photo of the signed paper also works if she's filing online.",
+          "s2": "She logs into <a href='https://sede.seg-social.gob.es' target='_blank' rel='noreferrer' style='color: var(--accent-primary);'>sede.seg-social.gob.es</a> with Cl@ve or her digital certificate.",
+          "s3": "She finds the trámite \"Solicitud de prestación por incapacidad temporal\" (in the \"Ciudadanos\" → \"Familia\" / \"Empleados de hogar\" section).",
+          "s4": "She fills in the application and uploads, as supporting documents: parte de baja + your signed C-133 + her DNI/NIE + IBAN. Done."
+        },
+        "optionB": {
+          "title": "Option B — You submit it yourself online (if she can't)",
+          "p1": "If she doesn't have a digital certificate or Cl@ve, you can submit the C-133 on her behalf via the generic document-upload trámite. This is the click-by-click path from <strong>sede.seg-social.gob.es</strong>:",
+          "s1": "On the homepage, click <strong>\"Ciudadanos\"</strong> in the top tabs (or scroll to the \"Ciudadanos\" panel).",
+          "s2": "In the left menu, click <strong>\"Familia\"</strong> → <strong>\"Empleados del hogar\"</strong>. (Alternative: use the search box at the top, type \"C-133\" or \"certificado del empleador\".)",
+          "s3": "Look for <strong>\"Aportación de documentos a un trámite\"</strong> or <strong>\"Aportar documentos para una prestación\"</strong> and click it.",
+          "s4": "Authenticate with <strong>Cl@ve permanente</strong> or your <strong>certificado digital</strong>. (You can install Cl@ve in 10 minutes at clave.gob.es if you don't have it.)",
+          "s5": "Reference the worker's NSS as the prestación holder, choose \"Incapacidad temporal\" as the trámite type, and upload the signed C-133 PDF.",
+          "s6": "Save the <strong>justificante</strong> (receipt) PDF — it's your proof of submission. Forward a copy to the worker so she can reference it in her own application."
+        },
+        "optionC": {
+          "title": "Option C — Without a digital certificate",
+          "p1": "If neither of you has a digital certificate or Cl@ve, three offline channels work:",
+          "run": "the government's no-certificate trámite portal — upload the C-133 with just your DNI",
+          "mail": "Send the signed paper C-133 by certified mail (correo ordinario certificado) to the INSS office in your province",
+          "inPerson": "Walk it into a Centro de Atención e Información de la Seguridad Social (CAISS) — book an appointment at 901 16 65 65 or 91 542 11 76 or via run.gob.es/trdcita"
+        }
       },
       "example": {
         "title": "Worked Example: 8h/week Worker on a Full Month of Baja",
@@ -585,23 +632,23 @@
       "workerSteps": {
         "title": "What She (the Worker) Must Do",
         "intro": "She is responsible for filing the actual benefit claim. Her steps are:",
-        "s1": "Get the parte de baja from her doctor and hand a copy to every employer within 3 days.",
-        "s2": "Submit follow-up partes de confirmacion every 7 days (common illness) or as the doctor instructs.",
-        "s3": "File the IT benefit application at the INSS within 15 calendar days of the baja, attaching: parte de baja + every employer's signed C-133 + her DNI/NIE + bank details for the payment.",
-        "s4": "When she recovers, deliver the parte de alta to every employer the same day.",
+        "s1": "Get the <strong>parte de baja</strong> from her doctor and hand a copy to every employer within 3 days.",
+        "s2": "Submit follow-up <strong>partes de confirmacion</strong> every 7 days (common illness) or as the doctor instructs.",
+        "s3": "File the IT benefit application at the INSS within 15 calendar days of the baja, attaching: <strong>parte de baja</strong> + every employer's signed <strong>C-133</strong> + her DNI/NIE + bank details for the payment.",
+        "s4": "When she recovers, deliver the <strong>parte de alta</strong> to every employer the same day.",
         "cta": "Open Sede Electronica de la Seguridad Social"
       },
       "documents": {
         "title": "Documents Checklist",
         "intro": "What you both need to gather:",
-        "d1": "Parte de baja medica (from her doctor) — she gives a copy to you and keeps the original for the INSS",
-        "d2": "C-133 signed by you (one per employer if she has several)",
+        "d1": "<strong>Parte de baja medica</strong> (from her doctor) — she gives a copy to you and keeps the original for the INSS",
+        "d2": "<strong>C-133</strong> signed by you (one per employer if she has several)",
         "d3": "Her DNI/NIE and Numero de Afiliacion a la Seguridad Social (NSS)",
         "d4": "IBAN for the INSS to deposit the benefit"
       },
       "after": {
         "title": "After She Returns",
-        "p1": "Once she recovers and you receive the parte de alta:",
+        "p1": "Once she recovers and you receive the <strong>parte de alta</strong>:",
         "a1": "She returns to work the day after the alta",
         "a2": "Resume normal salary on the next nomina",
         "a3": "No need to re-register her in IMPORT@SS — the contract was never terminated"
@@ -611,7 +658,7 @@
         "m1": "Filing a baja in IMPORT@SS — DO NOT. Sick leave suspends the contract; it does not end it. A baja means losing her job.",
         "m2": "Stopping the SS direct debit — contributions continue during the entire leave",
         "m3": "Not paying days 4-8 — the worker can claim them with interest plus penalties",
-        "m4": "Skipping the C-133 — without it, the INSS denies or delays her benefit indefinitely"
+        "m4": "Skipping the <strong>C-133</strong> — without it, the INSS denies or delays her benefit indefinitely"
       }
     },
     "form": {
