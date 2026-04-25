@@ -27,7 +27,7 @@
     "ctaNomina": "Probar el Generador de Nominas",
     "ctaGuide": "Leer la Guia de Contratacion 2026",
     "modulesTitle": "Modulos Disponibles",
-    "modulesCount": "3 Disponibles",
+    "modulesCount": "4 Disponibles",
     "nomina": {
       "title": "Nomina Empleada de Hogar",
       "description": "Genera nominas oficiales para tu empleada de hogar. Calcula automaticamente las cotizaciones a la Seguridad Social, MEI, Desempleo y el salario neto segun la normativa 2026."
@@ -39,6 +39,10 @@
     "modelo149": {
       "title": "Generador Modelo 149",
       "description": "Solicita la Ley Beckham (Regimen Especial de Trabajadores Desplazados) automaticamente con formularios pre-rellenados."
+    },
+    "bajaMedica": {
+      "title": "Baja Medica de Empleada de Hogar (C-133)",
+      "description": "Guia paso a paso para cuando tu empleada de hogar se da de baja medica. Genera el certificado del empleador C-133 que pide el INSS para su prestacion."
     }
   },
   "nomina": {
@@ -527,6 +531,162 @@
         "section3": "Seccion 3: Motivo",
         "section4": "Seccion 4: Situacion y fechas",
         "box": "Casilla"
+      }
+    }
+  },
+  "bajaMedica": {
+    "pageTitle": "Baja Medica de tu Empleada",
+    "pageHighlight": "Certificado del Empleador C-133",
+    "pageSubtitle": "Cuando tu empleada de hogar se pone de baja, debes emitir un C-133 para que pueda solicitar la prestacion ante la Seguridad Social. Te explicamos el proceso y te generamos el formulario.",
+    "formNote": "Incluye PDF C-133 prerellenado",
+    "guide": {
+      "whatIs": {
+        "title": "Que es el C-133?",
+        "p1": "El C-133 es el Certificado del Empleador oficial del INSS. Acredita la relacion laboral y las bases de cotizacion de la empleada de hogar para que pueda solicitar prestaciones de la Seguridad Social — habitualmente por incapacidad temporal (baja medica), pero tambien por nacimiento y cuidado de menor, riesgo en el embarazo, riesgo durante la lactancia o cuidado de menor con cancer.",
+        "p2": "Sin un C-133 firmado por cada uno de sus empleadores, el INSS no puede calcular la prestacion. Si trabaja en varias casas, todos los empleadores deben firmar uno.",
+        "p3": "Importante: el C-133 NO sustituye al parte de baja del medico — es un documento aparte que la trabajadora debe adjuntar a su solicitud de prestacion."
+      },
+      "whoPays": {
+        "title": "Quien paga durante la baja?",
+        "p1": "El contrato queda suspendido (no se devenga salario) pero la prestacion por IT sustituye a la nomina. Para enfermedad comun o accidente no laboral, desde la reforma de 2022 el reparto es:",
+        "colDays": "Dias de baja",
+        "colWho": "Quien paga",
+        "colAmount": "Cuantia",
+        "row1": { "days": "Dias 1-3", "who": "Nadie", "amount": "0% — sin retribucion (salvo pacto)" },
+        "row2": { "days": "Dias 4-8", "who": "Empleador", "amount": "60% de la base reguladora" },
+        "row3": { "days": "Dias 9-20", "who": "INSS (pago directo)", "amount": "60% de la base reguladora" },
+        "row4": { "days": "Dia 21+", "who": "INSS (pago directo)", "amount": "75% de la base reguladora" },
+        "note": "En accidente de trabajo o enfermedad profesional (AT/EP), el INSS paga el 75% directamente desde el dia siguiente a la baja — no hay tramo a cargo del empleador.",
+        "continueSs": "Aunque el salario quede suspendido, debes seguir pagando las cuotas mensuales de Seguridad Social durante toda la baja. No detengas la domiciliacion."
+      },
+      "employerSteps": {
+        "title": "Lo que tienes que hacer tu (empleador)",
+        "intro": "Hay 4 cosas que debes hacer en cuanto tu empleada te entregue el parte de baja:",
+        "s1": "<strong>Recibir el parte de baja</strong> de la trabajadora (papel o digital). Guarda copia — necesitaras las fechas.",
+        "s2": "<strong>Cumplimentar el C-133</strong> con tus datos (DNI, CCC, domicilio) y los suyos (NSS, NIE, tipo de contrato, tramo, fechas). Usa el formulario de abajo para generarlo.",
+        "s3": "<strong>Firmar el C-133</strong> y entregarle copia firmada para que lo adjunte a su solicitud al INSS.",
+        "s4": "<strong>Pagar los dias 4-8</strong> directamente a la trabajadora (60% de la base reguladora) en la siguiente nomina. Reflejalo como concepto separado, no como salario ordinario.",
+        "s5": "<strong>Continuar pagando cuotas a la SS</strong> con normalidad mediante domiciliacion. NO des de baja en IMPORT@SS — el contrato esta suspendido, no extinguido."
+      },
+      "workerSteps": {
+        "title": "Lo que tiene que hacer ella (trabajadora)",
+        "intro": "Ella es responsable de presentar la solicitud de prestacion. Sus pasos son:",
+        "s1": "Conseguir el parte de baja de su medico de cabecera y entregar copia a cada empleador en el plazo de 3 dias.",
+        "s2": "Presentar partes de confirmacion cada 7 dias (enfermedad comun) o segun le indique el medico.",
+        "s3": "Solicitar la prestacion de IT al INSS en los 15 dias naturales siguientes a la baja, adjuntando: parte de baja + C-133 firmado por cada empleador + DNI/NIE + IBAN para el cobro.",
+        "s4": "Cuando se recupere, entregar el parte de alta a cada empleador el mismo dia.",
+        "cta": "Ir a Sede Electronica de la Seguridad Social"
+      },
+      "documents": {
+        "title": "Lista de documentos",
+        "intro": "Lo que necesitais reunir entre los dos:",
+        "d1": "Parte de baja medica (de su medico) — entrega copia al empleador y conserva el original para el INSS",
+        "d2": "C-133 firmado por ti (uno por empleador si trabaja en varias casas)",
+        "d3": "Su DNI/NIE y Numero de Afiliacion a la Seguridad Social (NSS)",
+        "d4": "IBAN para que el INSS le ingrese la prestacion"
+      },
+      "after": {
+        "title": "Cuando se reincorpora",
+        "p1": "Una vez recuperada y cuando recibas el parte de alta:",
+        "a1": "Vuelve al trabajo el dia siguiente al alta",
+        "a2": "Reanuda la nomina ordinaria en el siguiente recibo",
+        "a3": "No hace falta volver a darla de alta en IMPORT@SS — el contrato nunca llego a extinguirse"
+      },
+      "mistakes": {
+        "title": "Errores comunes a evitar",
+        "m1": "Dar de baja en IMPORT@SS — NO. La baja medica suspende el contrato; no lo extingue. Una baja en SS supondria perder el empleo.",
+        "m2": "Cancelar la domiciliacion de las cuotas — se siguen pagando durante toda la baja",
+        "m3": "No pagar los dias 4-8 — la trabajadora puede reclamarlos con intereses y recargo",
+        "m4": "Saltarse el C-133 — sin el, el INSS deniega o demora indefinidamente la prestacion"
+      }
+    },
+    "form": {
+      "title": "Generar el C-133",
+      "subtitle": "Rellena los campos a continuacion. Generaremos un resumen de preparacion que puedes imprimir, firmar y entregar junto al PDF oficial en la Sede Electronica.",
+      "step": "Paso",
+      "of": "de",
+      "next": "Siguiente",
+      "back": "Atras",
+      "steps": {
+        "s1": "Tipo de prestacion",
+        "s2": "Empleador",
+        "s3": "Trabajadora y fechas",
+        "s4": "Bases de cotizacion",
+        "s5": "Resumen"
+      },
+      "prestacion": {
+        "title": "Prestacion solicitada",
+        "help": "Para que se solicita el certificado? En una baja medica normal, elige 'Incapacidad temporal'."
+      },
+      "employer": {
+        "name": "Apellidos y nombre",
+        "dni": "DNI / NIE / Pasaporte",
+        "ccc": "CCC (Codigo de Cuenta de Cotizacion)",
+        "cccHelp": "Tu codigo de empleador en la TGSS — el mismo que usas en las nominas mensuales",
+        "via": "Calle / via",
+        "numero": "Numero",
+        "bloque": "Bloque",
+        "escalera": "Escalera",
+        "piso": "Piso",
+        "puerta": "Puerta",
+        "cp": "C.P.",
+        "localidad": "Localidad",
+        "provincia": "Provincia",
+        "telefono": "Telefono",
+        "address": "Domicilio"
+      },
+      "worker": {
+        "name": "Apellidos y nombre",
+        "nss": "Numero de la Seguridad Social (NSS)",
+        "nssHelp": "Su NAF de 12 digitos — aparece en la TIE o en cualquier nomina suya",
+        "dni": "DNI / NIE / Pasaporte",
+        "telefono": "Telefono",
+        "contractTitle": "Tipo de contrato",
+        "tramo": "Tramo de cotizacion",
+        "tramoHelp": "Tramo asignado por la TGSS. Si no lo sabes, mira su ultima nomina o el recibo de la SS.",
+        "fechaInicio": "Fecha de inicio de actividad contigo",
+        "fechaInicioHelp": "Cuando empezo a trabajar en tu casa",
+        "fechaInterrupcion": "Fecha de la baja medica",
+        "fechaInterrupcionHelp": "Primer dia de la baja segun el parte medico",
+        "fechaInterrupcionNcm": "Inicio del descanso por nacimiento/cuidado",
+        "fechaInterrupcionNcmHelp": "En caso de parto, el dia siguiente al nacimiento (o el mismo dia si no trabajo)",
+        "fechaPrevistaFin": "Fecha prevista de fin del contrato (si la hay)",
+        "fechaPrevistaFinHelp": "Solo si tiene contrato temporal",
+        "ncmTitle": "Periodo de descanso obligatorio",
+        "fechaInicioObligatorio": "Inicio del periodo obligatorio",
+        "fechaFinObligatorio": "Fin del periodo obligatorio"
+      },
+      "bases": {
+        "required": "El INSS exige {n} base(s) de cotizacion — tienes contrato a {type}.",
+        "completo": "tiempo completo",
+        "parcial": "tiempo parcial",
+        "tramoHint": "Base sugerida para el tramo seleccionado: {base} EUR/mes",
+        "year": "Ano",
+        "month": "Mes",
+        "days": "Dias cotizados",
+        "base": "Base (EUR)",
+        "daysShort": "dias",
+        "add": "Anadir mes",
+        "remove": "Quitar",
+        "observaciones": "Observaciones (opcional)"
+      },
+      "signature": {
+        "title": "Firma",
+        "localidad": "Localidad",
+        "dia": "Dia",
+        "mes": "Mes",
+        "anio": "Ano"
+      },
+      "review": {
+        "title": "Resumen de preparacion del C-133",
+        "subtitle": "Usa este resumen como referencia al rellenar el formulario oficial en la Sede Electronica o al imprimirlo para el INSS.",
+        "downloadPdf": "Descargar PDF",
+        "goToSede": "Ir a Sede Electronica",
+        "section1": "Seccion 1: Prestacion",
+        "section2": "Seccion 2: Empleador",
+        "section3": "Seccion 3: Trabajadora y fechas",
+        "section4": "Seccion 4: Bases de cotizacion",
+        "section5": "Seccion 5: Firma"
       }
     }
   }

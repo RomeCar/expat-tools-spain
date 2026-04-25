@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import { Calculator, FileText, ArrowRight, ShieldCheck, BookOpen } from 'lucide-react';
+import { Calculator, FileText, ArrowRight, ShieldCheck, BookOpen, Stethoscope } from 'lucide-react';
 
 export default function LandingPage() {
   const { t } = useLanguage();
@@ -76,6 +76,21 @@ export default function LandingPage() {
               <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{t('landing.modelo149.title')}</h3>
               <p style={{ color: 'var(--text-secondary)', flexGrow: 1 }}>
                 {t('landing.modelo149.description')}
+              </p>
+            </div>
+          </Link>
+
+          <Link to="/guides/baja-medica" style={{ color: 'inherit' }}>
+            <div className="glass-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
+                <div style={{ background: 'var(--bg-tertiary)', padding: '1rem', borderRadius: '0.75rem', display: 'inline-flex' }}>
+                  <Stethoscope size={28} style={{ color: 'var(--accent-primary)' }} />
+                </div>
+                <span style={{ fontSize: '0.75rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--success)' }}>{t('common.guide')}</span>
+              </div>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>{t('landing.bajaMedica.title')}</h3>
+              <p style={{ color: 'var(--text-secondary)', flexGrow: 1 }}>
+                {t('landing.bajaMedica.description')}
               </p>
             </div>
           </Link>
