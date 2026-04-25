@@ -537,14 +537,14 @@
   "bajaMedica": {
     "pageTitle": "Baja Medica de tu Empleada",
     "pageHighlight": "Certificado del Empleador C-133",
-    "pageSubtitle": "Cuando tu empleada de hogar se pone de baja, debes emitir un C-133 para que pueda solicitar la prestacion ante la Seguridad Social. Te explicamos el proceso y te generamos el formulario.",
-    "formNote": "Incluye PDF C-133 prerellenado",
+    "pageSubtitle": "Cuando tu empleada de hogar se pone de baja, debes emitir un <strong>C-133</strong> para que pueda solicitar la prestacion ante la Seguridad Social. Te explicamos el proceso y te generamos el formulario.",
+    "formNote": "Incluye PDF <strong>C-133</strong> prerellenado",
     "guide": {
       "whatIs": {
         "title": "Que es el C-133?",
-        "p1": "El C-133 es el Certificado del Empleador oficial del INSS. Acredita la relacion laboral y las bases de cotizacion de la empleada de hogar para que pueda solicitar prestaciones de la Seguridad Social — habitualmente por incapacidad temporal (baja medica), pero tambien por nacimiento y cuidado de menor, riesgo en el embarazo, riesgo durante la lactancia o cuidado de menor con cancer.",
-        "p2": "Sin un C-133 firmado por cada uno de sus empleadores, el INSS no puede calcular la prestacion. Si trabaja en varias casas, todos los empleadores deben firmar uno.",
-        "p3": "Importante: el C-133 NO sustituye al parte de baja del medico — es un documento aparte que la trabajadora debe adjuntar a su solicitud de prestacion."
+        "p1": "El <strong>C-133</strong> es el <strong>Certificado del Empleador</strong> oficial del INSS. Acredita la relacion laboral y las bases de cotizacion de la empleada de hogar para que pueda solicitar prestaciones de la Seguridad Social — habitualmente por incapacidad temporal (baja medica), pero tambien por nacimiento y cuidado de menor, riesgo en el embarazo, riesgo durante la lactancia o cuidado de menor con cancer.",
+        "p2": "Sin un <strong>C-133</strong> firmado por cada uno de sus empleadores, el INSS no puede calcular la prestacion. Si trabaja en varias casas, todos los empleadores deben firmar uno.",
+        "p3": "Importante: el <strong>C-133</strong> NO sustituye al <strong>parte de baja</strong> del medico — es un documento aparte que la trabajadora debe adjuntar a su solicitud de prestacion."
       },
       "whoPays": {
         "title": "Quien paga durante la baja?",
@@ -561,12 +561,59 @@
       },
       "employerSteps": {
         "title": "Lo que tienes que hacer tu (empleador)",
-        "intro": "Hay 5 cosas que debes hacer en cuanto tu empleada te entregue el parte de baja:",
-        "s1": "<strong>Recibir el parte de baja</strong> de la trabajadora. El parte de baja es un documento oficial de una pagina que su medico de cabecera (en su centro de salud) imprime o envia digitalmente — indica el grupo de diagnostico, la fecha de inicio y la duracion estimada. Ella conserva el original para el INSS; tu te quedas con foto o copia para tus archivos (necesitaras la fecha de inicio).",
-        "s2": "<strong>Cumplimentar el C-133</strong> con tus datos (DNI, CCC, domicilio) y los suyos (NSS, NIE, tipo de contrato, tramo, fechas). <a href='#form' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Usa el formulario de abajo</a> para generarlo.",
+        "intro": "Hay 5 cosas que debes hacer en cuanto tu empleada te entregue el <strong>parte de baja</strong>:",
+        "s1": "<strong>Recibir el parte de baja</strong> de la trabajadora. El <strong>parte de baja</strong> es un documento oficial de una pagina que su medico de cabecera (en su centro de salud) imprime o envia digitalmente — indica el grupo de diagnostico, la fecha de inicio y la duracion estimada. Ella conserva el original para el INSS; tu te quedas con foto o copia para tus archivos (necesitaras la fecha de inicio).",
+        "s2": "<strong>Cumplimentar el C-133</strong> con tus datos (DNI, CCC, domicilio) y los suyos (NSS, NIE, tipo de contrato, tramo, fechas). <a href='#form' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Usa el formulario de abajo</a> para generarlo. Despues, <a href='#submit' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>mira la guia de presentacion</a> para saber como enviarlo.",
         "s3": "<strong>Firmar el C-133</strong> y entregarle copia firmada para que lo adjunte a su solicitud al INSS.",
         "s4": "<strong>Pagar los dias 4-8</strong> directamente a la trabajadora (60% de la base reguladora) en la siguiente nomina. Reflejalo como concepto separado, no como salario ordinario. <a href='#example' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Mira el ejemplo de abajo</a>.",
         "s5": "<strong>Continuar pagando cuotas a la SS</strong> con normalidad mediante domiciliacion. NO des de baja en IMPORT@SS — el contrato esta suspendido, no extinguido."
+      },
+      "calculator": {
+        "title": "Calculadora: cuanto vas a pagar?",
+        "intro": "Introduce su salario bruto mensual (o horas/semana y tarifa) y te calculamos exactamente cuanto le tienes que pagar en los dias 4-8 — y cuanto se hace cargo el INSS despues. Numeros con tarifas 2026.",
+        "tabSalary": "Salario mensual",
+        "tabHours": "Horas/semana × tarifa",
+        "monthlySalary": "Salario bruto mensual (EUR)",
+        "hoursPerWeek": "Horas por semana",
+        "hourlyRate": "Tarifa por hora (EUR)",
+        "computedSalary": "Salario mensual calculado",
+        "tramoLabel": "Tramo de cotizacion",
+        "baseDiaria": "Base reguladora diaria",
+        "youPay": "Tu pagas (dias 4-8)",
+        "inss920": "INSS paga directo (dias 9-20, 60%)",
+        "inss2130": "INSS paga directo (dias 21+, 75%)",
+        "summaryLabel": "En resumen:",
+        "summary": "le transferiras unos {amount} en la siguiente nomina (importe unico, da igual cuanto dure la baja). A partir del dia 8, el INSS se encarga de todo."
+      },
+      "submit": {
+        "title": "Como presentar realmente el C-133",
+        "intro": "Una vez tengas el C-133 cumplimentado y firmado, hay tres formas de hacerlo llegar al INSS. La mas sencilla, con diferencia, es la opcion A.",
+        "openSede": "Abrir Sede Electronica",
+        "optionA": {
+          "title": "Opcion A — Lo presenta ella (recomendado, 90% de casos)",
+          "p1": "El camino mas simple: tu no presentas nada. El C-133 forma parte del paquete de SU solicitud de prestacion — ella lo adjunta como documentacion acreditativa al solicitar la IT.",
+          "s1": "<strong>Imprime el C-133</strong> (o guarda el PDF), firmalo y entregale copia firmada a tu trabajadora. Una foto del papel firmado tambien sirve si va a presentarlo online.",
+          "s2": "Ella accede a <a href='https://sede.seg-social.gob.es' target='_blank' rel='noreferrer' style='color: var(--accent-primary);'>sede.seg-social.gob.es</a> con Cl@ve o su certificado digital.",
+          "s3": "Localiza el tramite \"Solicitud de prestacion por incapacidad temporal\" (en \"Ciudadanos\" → \"Familia\" / \"Empleados de hogar\").",
+          "s4": "Rellena la solicitud y sube como documentacion acreditativa: parte de baja + tu C-133 firmado + su DNI/NIE + IBAN. Ya esta."
+        },
+        "optionB": {
+          "title": "Opcion B — Lo presentas tu online (si ella no puede)",
+          "p1": "Si ella no tiene certificado digital ni Cl@ve, puedes presentar el C-133 en su nombre mediante el tramite generico de aportacion de documentos. Esta es la ruta paso a paso desde <strong>sede.seg-social.gob.es</strong>:",
+          "s1": "En la pagina principal, haz clic en <strong>\"Ciudadanos\"</strong> en las pestañas superiores (o baja al panel \"Ciudadanos\").",
+          "s2": "En el menu izquierdo, clic en <strong>\"Familia\"</strong> → <strong>\"Empleados del hogar\"</strong>. (Alternativa: usa el buscador de arriba, escribe \"C-133\" o \"certificado del empleador\".)",
+          "s3": "Busca <strong>\"Aportacion de documentos a un tramite\"</strong> o <strong>\"Aportar documentos para una prestacion\"</strong> y haz clic.",
+          "s4": "Autenticate con <strong>Cl@ve permanente</strong> o con tu <strong>certificado digital</strong>. (Puedes instalar Cl@ve en 10 minutos en clave.gob.es si no lo tienes.)",
+          "s5": "Indica el NSS de la trabajadora como titular de la prestacion, elige \"Incapacidad temporal\" como tipo de tramite y sube el PDF firmado del C-133.",
+          "s6": "Guarda el <strong>justificante</strong> (PDF) — es tu prueba de presentacion. Reenvialo a la trabajadora para que pueda referenciarlo en su propia solicitud."
+        },
+        "optionC": {
+          "title": "Opcion C — Sin certificado digital",
+          "p1": "Si ninguno de los dos tiene certificado o Cl@ve, hay tres canales sin digital:",
+          "run": "el portal de tramites sin certificado del gobierno — sube el C-133 con solo el DNI",
+          "mail": "Envia el C-133 firmado por correo ordinario certificado a la oficina del INSS de tu provincia",
+          "inPerson": "Llevatelo en persona a un Centro de Atencion e Informacion de la Seguridad Social (CAISS) — pide cita en 901 16 65 65 o 91 542 11 76 o en run.gob.es/trdcita"
+        }
       },
       "example": {
         "title": "Ejemplo: trabajadora de 8h/semana, baja de un mes entero",
@@ -585,23 +632,23 @@
       "workerSteps": {
         "title": "Lo que tiene que hacer ella (trabajadora)",
         "intro": "Ella es responsable de presentar la solicitud de prestacion. Sus pasos son:",
-        "s1": "Conseguir el parte de baja de su medico de cabecera y entregar copia a cada empleador en el plazo de 3 dias.",
-        "s2": "Presentar partes de confirmacion cada 7 dias (enfermedad comun) o segun le indique el medico.",
-        "s3": "Solicitar la prestacion de IT al INSS en los 15 dias naturales siguientes a la baja, adjuntando: parte de baja + C-133 firmado por cada empleador + DNI/NIE + IBAN para el cobro.",
-        "s4": "Cuando se recupere, entregar el parte de alta a cada empleador el mismo dia.",
+        "s1": "Conseguir el <strong>parte de baja</strong> de su medico de cabecera y entregar copia a cada empleador en el plazo de 3 dias.",
+        "s2": "Presentar <strong>partes de confirmacion</strong> cada 7 dias (enfermedad comun) o segun le indique el medico.",
+        "s3": "Solicitar la prestacion de IT al INSS en los 15 dias naturales siguientes a la baja, adjuntando: <strong>parte de baja</strong> + <strong>C-133</strong> firmado por cada empleador + DNI/NIE + IBAN para el cobro.",
+        "s4": "Cuando se recupere, entregar el <strong>parte de alta</strong> a cada empleador el mismo dia.",
         "cta": "Ir a Sede Electronica de la Seguridad Social"
       },
       "documents": {
         "title": "Lista de documentos",
         "intro": "Lo que necesitais reunir entre los dos:",
-        "d1": "Parte de baja medica (de su medico) — entrega copia al empleador y conserva el original para el INSS",
-        "d2": "C-133 firmado por ti (uno por empleador si trabaja en varias casas)",
+        "d1": "<strong>Parte de baja medica</strong> (de su medico) — entrega copia al empleador y conserva el original para el INSS",
+        "d2": "<strong>C-133</strong> firmado por ti (uno por empleador si trabaja en varias casas)",
         "d3": "Su DNI/NIE y Numero de Afiliacion a la Seguridad Social (NSS)",
         "d4": "IBAN para que el INSS le ingrese la prestacion"
       },
       "after": {
         "title": "Cuando se reincorpora",
-        "p1": "Una vez recuperada y cuando recibas el parte de alta:",
+        "p1": "Una vez recuperada y cuando recibas el <strong>parte de alta</strong>:",
         "a1": "Vuelve al trabajo el dia siguiente al alta",
         "a2": "Reanuda la nomina ordinaria en el siguiente recibo",
         "a3": "No hace falta volver a darla de alta en IMPORT@SS — el contrato nunca llego a extinguirse"
@@ -611,7 +658,7 @@
         "m1": "Dar de baja en IMPORT@SS — NO. La baja medica suspende el contrato; no lo extingue. Una baja en SS supondria perder el empleo.",
         "m2": "Cancelar la domiciliacion de las cuotas — se siguen pagando durante toda la baja",
         "m3": "No pagar los dias 4-8 — la trabajadora puede reclamarlos con intereses y recargo",
-        "m4": "Saltarse el C-133 — sin el, el INSS deniega o demora indefinidamente la prestacion"
+        "m4": "Saltarse el <strong>C-133</strong> — sin el, el INSS deniega o demora indefinidamente la prestacion"
       }
     },
     "form": {

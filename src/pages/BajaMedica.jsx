@@ -1,7 +1,10 @@
+import { useState, useMemo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import C133Form from '../components/bajaMedica/C133Form';
-import { CheckCircle, AlertTriangle, FileText, Info, ExternalLink, ChevronRight, List, Stethoscope, Calendar, Coins, Calculator } from 'lucide-react';
+import { findTramo, REGULATIONS_2026 } from '../config/regulations';
+import { formatCurrency } from '../utils/formatters';
+import { CheckCircle, AlertTriangle, FileText, Info, ExternalLink, ChevronRight, List, Stethoscope, Calendar, Coins, Calculator, Send } from 'lucide-react';
 
 function Section({ id, icon: Icon, title, children }) {
   return (
@@ -36,12 +39,118 @@ function StepList({ items }) {
   );
 }
 
+// `P` renders the children as HTML so i18n strings can use inline tags like
+// <strong>...</strong> for key document names (C-133, parte de baja, etc.).
+// Safe here because all content comes from our own i18n JSON, not user input.
 function P({ children }) {
+  if (typeof children === 'string') {
+    return <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: children }} />;
+  }
   return <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', lineHeight: 1.7 }}>{children}</p>;
 }
 
-function PHtml({ html }) {
-  return <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: html }} />;
+const PHtml = ({ html }) => <P>{html}</P>;
+
+// Mini-calculator for the IT cash flow during baja (days 4-8 employer / 9-20 INSS / 21+ INSS).
+// Inputs: monthly gross salary OR hours/week + hourly rate. Output: who pays what.
+function BajaCalculator() {
+  const { t } = useLanguage();
+  const c = t('bajaMedica.guide.calculator');
+  const [mode, setMode] = useState('salary'); // 'salary' or 'hours'
+  const [monthlySalary, setMonthlySalary] = useState('331');
+  const [hoursPerWeek, setHoursPerWeek] = useState('8');
+  const [hourlyRate, setHourlyRate] = useState(REGULATIONS_2026.smi.hourly.toString());
+
+  const computed = useMemo(() => {
+    const salary = mode === 'salary'
+      ? parseFloat(monthlySalary) || 0
+      : (parseFloat(hoursPerWeek) || 0) * 4.33 * (parseFloat(hourlyRate) || 0);
+    if (salary <= 0) return null;
+    const tramo = findTramo(salary);
+    const baseDiaria = tramo.base / 30;
+    const employer48 = 5 * 0.60 * baseDiaria;       // days 4-8: employer 60%
+    const inss920 = 12 * 0.60 * baseDiaria;          // days 9-20: INSS 60%
+    const inss2130 = 10 * 0.75 * baseDiaria;         // days 21-30: INSS 75%
+    return { salary, tramo, baseDiaria, employer48, inss920, inss2130, totalIfFullMonth: employer48 + inss920 + inss2130 };
+  }, [mode, monthlySalary, hoursPerWeek, hourlyRate]);
+
+  const inputStyle = { padding: '0.5rem', fontSize: '0.875rem' };
+  const labelStyle = { fontSize: '0.75rem', fontWeight: '500', color: 'var(--text-secondary)', display: 'block', marginBottom: '0.25rem' };
+
+  return (
+    <div className="glass-card" style={{ padding: '1.25rem 1.5rem', marginTop: '1rem', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+        <Calculator size={18} style={{ color: 'var(--accent-primary)' }} />
+        <h3 style={{ margin: 0, fontSize: '1.05rem' }}>{c.title}</h3>
+      </div>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '1rem', lineHeight: 1.5 }}>{c.intro}</p>
+
+      <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+        <button
+          onClick={() => setMode('salary')}
+          className={mode === 'salary' ? 'btn-primary' : 'btn-secondary'}
+          style={{ flex: 1, padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}
+        >
+          {c.tabSalary}
+        </button>
+        <button
+          onClick={() => setMode('hours')}
+          className={mode === 'hours' ? 'btn-primary' : 'btn-secondary'}
+          style={{ flex: 1, padding: '0.4rem 0.75rem', fontSize: '0.8rem' }}
+        >
+          {c.tabHours}
+        </button>
+      </div>
+
+      {mode === 'salary' ? (
+        <div>
+          <label style={labelStyle}>{c.monthlySalary}</label>
+          <input type="number" className="input-field" style={inputStyle} value={monthlySalary} onChange={e => setMonthlySalary(e.target.value)} placeholder="331" />
+        </div>
+      ) : (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+          <div>
+            <label style={labelStyle}>{c.hoursPerWeek}</label>
+            <input type="number" className="input-field" style={inputStyle} value={hoursPerWeek} onChange={e => setHoursPerWeek(e.target.value)} placeholder="8" />
+          </div>
+          <div>
+            <label style={labelStyle}>{c.hourlyRate}</label>
+            <input type="number" step="0.01" className="input-field" style={inputStyle} value={hourlyRate} onChange={e => setHourlyRate(e.target.value)} placeholder="9.55" />
+          </div>
+        </div>
+      )}
+
+      {computed && (
+        <div style={{ marginTop: '1rem', padding: '0.75rem 1rem', background: 'var(--bg-tertiary)', borderRadius: '0.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.4rem 1rem', fontSize: '0.875rem' }}>
+            {mode === 'hours' && (
+              <>
+                <span style={{ color: 'var(--text-secondary)' }}>{c.computedSalary}</span>
+                <span style={{ fontWeight: '600', color: 'var(--text-primary)' }}>{formatCurrency(computed.salary)}</span>
+              </>
+            )}
+            <span style={{ color: 'var(--text-secondary)' }}>{c.tramoLabel}</span>
+            <span style={{ fontWeight: '600', color: 'var(--text-primary)' }}>Tramo {computed.tramo.tramo} ({formatCurrency(computed.tramo.base)})</span>
+            <span style={{ color: 'var(--text-secondary)' }}>{c.baseDiaria}</span>
+            <span style={{ fontWeight: '600', color: 'var(--text-primary)' }}>{formatCurrency(computed.baseDiaria)}</span>
+          </div>
+
+          <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-color)', display: 'grid', gridTemplateColumns: '1fr auto', gap: '0.4rem 1rem', fontSize: '0.875rem' }}>
+            <span style={{ color: 'var(--danger)', fontWeight: '600' }}>{c.youPay}</span>
+            <span style={{ fontWeight: '700', color: 'var(--danger)' }}>{formatCurrency(computed.employer48)}</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>{c.inss920}</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>{formatCurrency(computed.inss920)}</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>{c.inss2130}</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>{formatCurrency(computed.inss2130)}</span>
+          </div>
+
+          <div style={{ marginTop: '0.75rem', padding: '0.5rem 0.75rem', background: 'rgba(239, 68, 68, 0.08)', borderRadius: '0.375rem', fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+            <strong>{c.summaryLabel}</strong> {c.summary.replace('{amount}', formatCurrency(computed.employer48))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function BajaMedica() {
@@ -54,6 +163,7 @@ export default function BajaMedica() {
     { id: 'what-is', label: g.whatIs.title },
     { id: 'who-pays', label: g.whoPays.title },
     { id: 'employer-steps', label: g.employerSteps.title },
+    { id: 'submit', label: g.submit.title },
     { id: 'example', label: g.example.title },
     { id: 'worker-steps', label: g.workerSteps.title },
     { id: 'documents', label: g.documents.title },
@@ -133,7 +243,33 @@ export default function BajaMedica() {
           <StepList items={[g.employerSteps.s1, g.employerSteps.s2, g.employerSteps.s3, g.employerSteps.s4, g.employerSteps.s5]} />
         </Section>
 
+        <Section id="submit" icon={Send} title={g.submit.title}>
+          <P>{g.submit.intro}</P>
+
+          <div style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '1rem 1.25rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--success)', marginBottom: '1.25rem' }}>
+            <h3 style={{ fontSize: '1rem', marginTop: 0, marginBottom: '0.5rem', color: 'var(--success)' }}>{g.submit.optionA.title}</h3>
+            <P>{g.submit.optionA.p1}</P>
+            <StepList items={[g.submit.optionA.s1, g.submit.optionA.s2, g.submit.optionA.s3, g.submit.optionA.s4]} />
+          </div>
+
+          <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>{g.submit.optionB.title}</h3>
+          <P>{g.submit.optionB.p1}</P>
+          <StepList items={[g.submit.optionB.s1, g.submit.optionB.s2, g.submit.optionB.s3, g.submit.optionB.s4, g.submit.optionB.s5, g.submit.optionB.s6]} />
+          <a href="https://sede.seg-social.gob.es" target="_blank" rel="noreferrer" className="btn-primary" style={{ marginTop: '0.5rem', display: 'inline-flex' }}>
+            {g.submit.openSede} <ExternalLink size={16} />
+          </a>
+
+          <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem', marginTop: '1.5rem' }}>{g.submit.optionC.title}</h3>
+          <P>{g.submit.optionC.p1}</P>
+          <ul style={{ listStyle: 'none', padding: 0, margin: '0.5rem 0', fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            <li>&bull; <a href="https://run.gob.es/tramites" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)' }}>run.gob.es/tramites</a> — {g.submit.optionC.run}</li>
+            <li>&bull; {g.submit.optionC.mail}</li>
+            <li>&bull; {g.submit.optionC.inPerson}</li>
+          </ul>
+        </Section>
+
         <Section id="example" icon={Calculator} title={g.example.title}>
+          <BajaCalculator />
           <P>{g.example.intro}</P>
           <div style={{ background: 'var(--bg-tertiary)', padding: '1rem 1.25rem', borderRadius: '0.5rem', marginBottom: '0.75rem' }}>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
