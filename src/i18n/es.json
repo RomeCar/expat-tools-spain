@@ -586,8 +586,22 @@
         "summary": "le transferiras unos {amount} en la siguiente nomina (importe unico, da igual cuanto dure la baja). A partir del dia 8, el INSS se encarga de todo."
       },
       "submit": {
-        "title": "Como presentar realmente el C-133",
-        "intro": "Una vez tengas el C-133 cumplimentado y firmado, hay tres formas de hacerlo llegar al INSS. La mas sencilla, con diferencia, es la opcion A.",
+        "title": "Como generar y presentar el C-133",
+        "intro": "Dos partes: primero generas el formulario (paso a paso a continuacion) y luego lo haces llegar al INSS (tres opciones de presentacion despues).",
+        "generate": {
+          "title": "Paso a paso: generar el C-133 con el formulario de abajo",
+          "intro": "El asistente al final de esta pagina genera un PDF del C-133 totalmente cumplimentado. Esto es lo que rellenaras en cada paso:",
+          "s1": "<strong>Pulsa el boton de abajo</strong> para ir al formulario y haz clic en \"Siguiente\" en cada paso.",
+          "s2": "<strong>Paso 1 — Tipo de prestacion:</strong> elige <em>\"Incapacidad temporal (baja medica)\"</em>. Es lo que solicita tu trabajadora cuando esta de baja medica. (Las otras opciones son para nacimiento, riesgo en embarazo, etc.)",
+          "s3": "<strong>Paso 2 — Tus datos (empleador):</strong> introduce tu nombre, DNI/NIE y tu <strong>CCC</strong> (Codigo de Cuenta de Cotizacion — lo encuentras en cualquier nomina que hayas emitido, o en IMPORT@SS dentro de tu perfil de empleador). Despues tu domicilio y un telefono.",
+          "s4": "<strong>Paso 3 — Datos de la trabajadora + fechas:</strong> su nombre completo, su <strong>NSS</strong> (el Numero de la Seguridad Social de 12 digitos — esta en su TIE o en cualquiera de sus nominas), su DNI/NIE, tipo de contrato (tiempo completo vs tiempo parcial/horas — casi siempre parcial en empleadas de hogar), su <strong>tramo</strong> (mira su ultima nomina o tu recibo mensual de la SS), la fecha en que empezo a trabajar contigo y el <strong>primer dia de su parte de baja</strong>.",
+          "s5": "<strong>Paso 4 — Bases de cotizacion:</strong> añade al menos una fila con la base del mes anterior. La base aparece en su ultima nomina bajo \"Base de cotizacion\" o en tu recibo mensual de la TGSS. Si es a tiempo parcial, añade los tres meses previos. El formulario sugiere automaticamente la base segun el tramo — normalmente solo tienes que confirmar.",
+          "s6": "<strong>Paso 4 (continuacion) — Datos de la firma:</strong> introduce tu localidad (p. ej. \"Madrid\") y el dia, mes y año de hoy. Esto aparecera en la linea de firma del C-133.",
+          "s7": "<strong>Paso 5 — Revision:</strong> pulsa <strong>\"Descargar PDF\"</strong>. Imprimelo, firmalo a mano en la linea de la firma y ya tienes tu C-133 listo para entregar o presentar.",
+          "cta": "Ir al formulario"
+        },
+        "submitTitle": "Ahora presentalo (3 opciones)",
+        "submitIntro": "Una vez firmado el C-133, hay tres formas de hacerlo llegar al INSS. La opcion A es, con diferencia, la mas sencilla.",
         "openSede": "Abrir Sede Electronica",
         "optionA": {
           "title": "Opcion A — Lo presenta ella (recomendado, 90% de casos)",

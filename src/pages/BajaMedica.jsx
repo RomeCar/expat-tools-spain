@@ -208,7 +208,7 @@ export default function BajaMedica() {
           <P>{g.whatIs.p1}</P>
           <P>{g.whatIs.p2}</P>
           <div style={{ background: 'rgba(37, 99, 235, 0.08)', padding: '1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--accent-primary)' }}>
-            <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>{g.whatIs.p3}</p>
+            <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }} dangerouslySetInnerHTML={{ __html: g.whatIs.p3 }} />
           </div>
         </Section>
 
@@ -234,7 +234,7 @@ export default function BajaMedica() {
           </table>
           <P>{g.whoPays.note}</P>
           <div style={{ background: 'var(--bg-tertiary)', padding: '0.75rem 1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--warning)', marginTop: '0.5rem' }}>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: 1.5 }}>{g.whoPays.continueSs}</p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0, lineHeight: 1.5 }} dangerouslySetInnerHTML={{ __html: g.whoPays.continueSs }} />
           </div>
         </Section>
 
@@ -246,20 +246,30 @@ export default function BajaMedica() {
         <Section id="submit" icon={Send} title={g.submit.title}>
           <P>{g.submit.intro}</P>
 
+          <h3 style={{ fontSize: '1.05rem', marginBottom: '0.5rem', marginTop: '1rem' }}>{g.submit.generate.title}</h3>
+          <P>{g.submit.generate.intro}</P>
+          <StepList items={[g.submit.generate.s1, g.submit.generate.s2, g.submit.generate.s3, g.submit.generate.s4, g.submit.generate.s5, g.submit.generate.s6, g.submit.generate.s7]} />
+          <a href="#form" className="btn-primary" style={{ marginTop: '0.25rem', marginBottom: '1.25rem', display: 'inline-flex' }}>
+            {g.submit.generate.cta} <ChevronRight size={16} />
+          </a>
+
+          <h3 style={{ fontSize: '1.05rem', marginBottom: '0.5rem', marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>{g.submit.submitTitle}</h3>
+          <P>{g.submit.submitIntro}</P>
+
           <div style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '1rem 1.25rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--success)', marginBottom: '1.25rem' }}>
-            <h3 style={{ fontSize: '1rem', marginTop: 0, marginBottom: '0.5rem', color: 'var(--success)' }}>{g.submit.optionA.title}</h3>
+            <h4 style={{ fontSize: '1rem', marginTop: 0, marginBottom: '0.5rem', color: 'var(--success)' }}>{g.submit.optionA.title}</h4>
             <P>{g.submit.optionA.p1}</P>
             <StepList items={[g.submit.optionA.s1, g.submit.optionA.s2, g.submit.optionA.s3, g.submit.optionA.s4]} />
           </div>
 
-          <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>{g.submit.optionB.title}</h3>
+          <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem' }}>{g.submit.optionB.title}</h4>
           <P>{g.submit.optionB.p1}</P>
           <StepList items={[g.submit.optionB.s1, g.submit.optionB.s2, g.submit.optionB.s3, g.submit.optionB.s4, g.submit.optionB.s5, g.submit.optionB.s6]} />
           <a href="https://sede.seg-social.gob.es" target="_blank" rel="noreferrer" className="btn-primary" style={{ marginTop: '0.5rem', display: 'inline-flex' }}>
             {g.submit.openSede} <ExternalLink size={16} />
           </a>
 
-          <h3 style={{ fontSize: '1rem', marginBottom: '0.5rem', marginTop: '1.5rem' }}>{g.submit.optionC.title}</h3>
+          <h4 style={{ fontSize: '1rem', marginBottom: '0.5rem', marginTop: '1.5rem' }}>{g.submit.optionC.title}</h4>
           <P>{g.submit.optionC.p1}</P>
           <ul style={{ listStyle: 'none', padding: 0, margin: '0.5rem 0', fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
             <li>&bull; <a href="https://run.gob.es/tramites" target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)' }}>run.gob.es/tramites</a> — {g.submit.optionC.run}</li>
