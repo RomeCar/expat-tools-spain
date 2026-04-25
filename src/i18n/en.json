@@ -768,11 +768,15 @@
         "observaciones": "Observations (optional)"
       },
       "signature": {
-        "title": "Signature line",
+        "title": "Date and signature",
+        "dateHelp": "These go on the date line: \"In [Locality] on [Day] of [Month] of [Year]\". The locality is the city where you sign — not your signature itself.",
         "localidad": "Locality",
         "dia": "Day",
         "mes": "Month",
-        "anio": "Year"
+        "anio": "Year",
+        "signLabel": "Draw your signature here (mouse or touchscreen)",
+        "signHelp": "We embed this drawing into the official C-133 above the \"Firma del empleador\" line. You can still hand-sign over it on paper if you prefer.",
+        "clear": "Clear"
       },
       "review": {
         "title": "Review your C-133",

@@ -119,6 +119,36 @@ export async function generateOfficialC133Pdf(data) {
   const yearShort = data.firmaAnio ? String(data.firmaAnio).slice(-2) : '';
   setText(form, '4.4 Año', yearShort, 2);
 
+  // Embed the user's drawn signature, if they provided one. The official C-133 has
+  // no AcroForm field for the signature — it's an empty space below "Firma del
+  // empleador". We overlay the PNG on page 1 (zero-indexed) at coordinates centred
+  // under the date line at y=262 (PDF coords from bottom-left, A4 height = 841.89).
+  // Page index and approximate placement were determined empirically from the
+  // template; if the form is revised, re-measure via the inspect-coords script.
+  if (data.firmaImage && typeof data.firmaImage === 'string' && data.firmaImage.startsWith('data:image/')) {
+    try {
+      const isPng = data.firmaImage.startsWith('data:image/png');
+      const png = isPng ? await pdf.embedPng(data.firmaImage) : await pdf.embedJpg(data.firmaImage);
+      const pages = pdf.getPages();
+      const sigPage = pages[1] || pages[0]; // Section-4 / signature page
+      // Place under "Firma del empleador" — right side of the page, below the date line.
+      // Target a 180x60 box; preserve aspect ratio of the source.
+      const TARGET_W = 180;
+      const TARGET_H = 60;
+      const scale = Math.min(TARGET_W / png.width, TARGET_H / png.height);
+      const w = png.width * scale;
+      const h = png.height * scale;
+      sigPage.drawImage(png, {
+        x: 400, // approx centre under the date line text
+        y: 195, // ~67 PDF-units below the date line (y=262); leaves clearance for "Firma del empleador" label
+        width: w,
+        height: h,
+      });
+    } catch (e) {
+      if (typeof console !== 'undefined') console.warn('[c133Filler] failed to embed signature image:', e?.message);
+    }
+  }
+
   // Save with field appearances updated so values are visible in any PDF reader.
   // We don't flatten — leaves fields editable in case the user wants to tweak.
   form.updateFieldAppearances();

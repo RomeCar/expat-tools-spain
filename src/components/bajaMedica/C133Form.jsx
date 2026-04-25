@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { PRESTACIONES, CONTRACT_TYPES, TRAMOS_2026, INITIAL_C133_DATA, requiredBaseMonths, getBaseForTramo } from '../../config/bajaMedica';
 import C133Review from './C133Review';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Eraser } from 'lucide-react';
 
 const TOTAL_STEPS = 5;
 
@@ -20,6 +20,120 @@ function Field({ label, help, children }) {
       {help && <div style={helpStyle}>{help}</div>}
     </div>
   );
+}
+
+// Signature pad — HTML5 canvas, no external deps. Saves a PNG dataURL.
+// `value` is the current dataURL (string or empty), `onChange` receives the new dataURL.
+function SignaturePad({ value, onChange, label, clearLabel }) {
+  const canvasRef = useRef(null);
+  const drawing = useRef(false);
+  const lastPt = useRef(null);
+
+  // On mount + when window resizes, set the internal pixel size to match the CSS box.
+  // We also redraw the existing value (so it survives a re-render).
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const fitCanvas = () => {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = '#111';
+      // Restore prior value
+      if (value) {
+        const img = new window.Image();
+        img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
+        img.src = value;
+      }
+    };
+    fitCanvas();
+    window.addEventListener('resize', fitCanvas);
+    return () => window.removeEventListener('resize', fitCanvas);
+    // We intentionally do NOT include `value` in deps — re-fitting on every stroke would
+    // wipe in-flight drawings. The canvas content is already updated via stroke handlers.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getPoint = (e) => {
+    const canvas = canvasRef.current;
+    const rect = canvas.getBoundingClientRect();
+    const t = e.touches?.[0];
+    return { x: (t ? t.clientX : e.clientX) - rect.left, y: (t ? t.clientY : e.clientY) - rect.top };
+  };
+  const start = (e) => { e.preventDefault(); drawing.current = true; lastPt.current = getPoint(e); };
+  const move = (e) => {
+    if (!drawing.current) return;
+    e.preventDefault();
+    const ctx = canvasRef.current.getContext('2d');
+    const pt = getPoint(e);
+    ctx.beginPath();
+    ctx.moveTo(lastPt.current.x, lastPt.current.y);
+    ctx.lineTo(pt.x, pt.y);
+    ctx.stroke();
+    lastPt.current = pt;
+  };
+  const end = () => {
+    if (!drawing.current) return;
+    drawing.current = false;
+    onChange(canvasRef.current.toDataURL('image/png'));
+  };
+  const clear = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    onChange('');
+  };
+
+  return (
+    <div>
+      {label && <div style={{ fontSize: '0.8rem', fontWeight: '500', color: 'var(--text-secondary)', marginBottom: '0.35rem' }}>{label}</div>}
+      <div style={{ position: 'relative', background: 'white', border: '1.5px solid var(--border-color)', borderRadius: '0.5rem', overflow: 'hidden' }}>
+        <canvas
+          ref={canvasRef}
+          style={{ width: '100%', height: '140px', display: 'block', cursor: 'crosshair', touchAction: 'none' }}
+          onMouseDown={start}
+          onMouseMove={move}
+          onMouseUp={end}
+          onMouseLeave={end}
+          onTouchStart={start}
+          onTouchMove={move}
+          onTouchEnd={end}
+        />
+        <button
+          type="button"
+          onClick={clear}
+          style={{ position: 'absolute', top: '0.5rem', right: '0.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.3rem', padding: '0.25rem 0.5rem', background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.1)', borderRadius: '0.25rem', color: '#444', fontSize: '0.75rem', cursor: 'pointer' }}
+        >
+          <Eraser size={12} /> {clearLabel}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Build N base-row defaults working backwards from the baja date.
+// e.g. baja=2026-04-26, n=3 → [{anio:2026, mes:3, dias:31, base:''}, {2,28,''}, {1,31,''}]
+function defaultBaseRows(bajaIso, n, suggestedBase) {
+  if (!bajaIso || !n) return [];
+  const [y, m] = bajaIso.split('-').map(Number);
+  if (!y || !m) return [];
+  // The "previous month" relative to the baja is m-1 (since baja is in month m).
+  // For part-time IT, we need the 3 months PRIOR to that; for full-time IT, just 1.
+  const rows = [];
+  for (let i = 0; i < n; i++) {
+    let mm = m - 1 - i;
+    let yy = y;
+    while (mm < 1) { mm += 12; yy -= 1; }
+    const daysInMonth = new Date(yy, mm, 0).getDate(); // mm is 1-12 here, this gives last day of mm
+    rows.push({ anio: String(yy), mes: String(mm), dias: String(daysInMonth), base: suggestedBase != null ? suggestedBase.toFixed(2) : '' });
+  }
+  return rows;
 }
 
 function RadioOption({ name, value, current, label, desc, onSelect }) {
@@ -51,6 +165,31 @@ export default function C133Form() {
   };
   const addBaseRow = () => setData(prev => ({ ...prev, bases: [...prev.bases, { anio: '', mes: '', dias: '', base: '' }] }));
   const removeBaseRow = (idx) => setData(prev => ({ ...prev, bases: prev.bases.filter((_, i) => i !== idx) }));
+
+  // When entering Step 4 (bases), auto-populate empty rows from the baja date.
+  // We treat "empty" as: only the initial single all-empty row, OR any existing
+  // rows are completely blank. If the user has typed anything, leave it alone.
+  useEffect(() => {
+    if (step !== 4) return;
+    const allBlank = data.bases.every(r => !r.anio && !r.mes && !r.dias && !r.base);
+    if (!allBlank || !data.fechaInterrupcion) return;
+    const n = requiredBaseMonths(data.prestacion, data.contractType);
+    const suggestedBase = getBaseForTramo(data.tramo);
+    const seeded = defaultBaseRows(data.fechaInterrupcion, n, suggestedBase);
+    if (seeded.length) setData(prev => ({ ...prev, bases: seeded }));
+    // Auto-fill signature day/month/year too if they're still on initial defaults.
+    if (!data.firmaDia || !data.firmaMes) {
+      const today = new Date();
+      const monthsEs = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+      setData(prev => ({
+        ...prev,
+        firmaDia: prev.firmaDia || String(today.getDate()),
+        firmaMes: prev.firmaMes || monthsEs[today.getMonth()],
+        firmaAnio: prev.firmaAnio || String(today.getFullYear()),
+      }));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
 
   const stepNames = [f.steps.s1, f.steps.s2, f.steps.s3, f.steps.s4, f.steps.s5];
   const canGoBack = step > 1;
@@ -236,11 +375,22 @@ export default function C133Form() {
 
             <div style={{ marginTop: '1rem', padding: '0.75rem 1rem', background: 'var(--bg-tertiary)', borderRadius: '0.5rem' }}>
               <div style={{ fontSize: '0.8rem', fontWeight: '600', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>{f.signature.title}</div>
+              <div style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', marginBottom: '0.5rem' }}>{f.signature.dateHelp}</div>
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 2fr 1fr', gap: '0.75rem' }}>
                 <Field label={f.signature.localidad}><input className="input-field" style={inputStyle} value={data.firmaLocalidad} onChange={e => update('firmaLocalidad', e.target.value)} /></Field>
                 <Field label={f.signature.dia}><input className="input-field" style={inputStyle} value={data.firmaDia} onChange={e => update('firmaDia', e.target.value)} maxLength={2} /></Field>
                 <Field label={f.signature.mes}><input className="input-field" style={inputStyle} value={data.firmaMes} onChange={e => update('firmaMes', e.target.value)} /></Field>
                 <Field label={f.signature.anio}><input className="input-field" style={inputStyle} value={data.firmaAnio} onChange={e => update('firmaAnio', e.target.value)} maxLength={4} /></Field>
+              </div>
+
+              <div style={{ marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid var(--border-color)' }}>
+                <SignaturePad
+                  label={f.signature.signLabel}
+                  clearLabel={f.signature.clear}
+                  value={data.firmaImage}
+                  onChange={(v) => update('firmaImage', v)}
+                />
+                <div style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', marginTop: '0.35rem' }}>{f.signature.signHelp}</div>
               </div>
             </div>
           </>
