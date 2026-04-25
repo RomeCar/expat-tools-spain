@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import { PRESTACIONES, CONTRACT_TYPES } from '../../config/bajaMedica';
-import { Download, ExternalLink } from 'lucide-react';
+import { Download, ExternalLink, Loader2, AlertTriangle } from 'lucide-react';
 
 function ReviewRow({ label, value }) {
   if (!value) return null;
@@ -39,9 +40,17 @@ export default function C133Review({ data }) {
     (data.empPiso || data.empPuerta ? `, ${[data.empBloque, data.empEscalera, data.empPiso, data.empPuerta].filter(Boolean).join(' ')}` : '') +
     (data.empCp || data.empLocalidad ? ` — ${[data.empCp, data.empLocalidad, data.empProvincia].filter(Boolean).join(' ')}` : '');
 
+  const [pdfState, setPdfState] = useState({ loading: false, error: null });
   const exportPDF = async () => {
-    const { generateOfficialC133Pdf } = await import('../../utils/c133OfficialFiller');
-    await generateOfficialC133Pdf(data);
+    setPdfState({ loading: true, error: null });
+    try {
+      const { generateOfficialC133Pdf } = await import('../../utils/c133OfficialFiller');
+      await generateOfficialC133Pdf(data);
+      setPdfState({ loading: false, error: null });
+    } catch (e) {
+      console.error('[C-133] download failed:', e);
+      setPdfState({ loading: false, error: e?.message || String(e) });
+    }
   };
 
   return (
@@ -91,13 +100,30 @@ export default function C133Review({ data }) {
       </ReviewSection>
 
       <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-        <button className="btn-primary" onClick={exportPDF} style={{ padding: '0.75rem 1.5rem' }}>
-          <Download size={18} /> {r.downloadPdf}
+        <button className="btn-primary" onClick={exportPDF} disabled={pdfState.loading} style={{ padding: '0.75rem 1.5rem', opacity: pdfState.loading ? 0.6 : 1 }}>
+          {pdfState.loading
+            ? <><Loader2 size={18} style={{ animation: 'spin 1s linear infinite' }} /> {language === 'en' ? 'Generating PDF…' : 'Generando PDF…'}</>
+            : <><Download size={18} /> {r.downloadPdf}</>
+          }
         </button>
         <a href="https://sede.seg-social.gob.es" target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.75rem 1.5rem' }}>
           {r.goToSede} <ExternalLink size={16} />
         </a>
       </div>
+      {pdfState.error && (
+        <div style={{ marginTop: '1rem', padding: '0.75rem 1rem', background: 'rgba(239, 68, 68, 0.08)', borderLeft: '4px solid var(--danger)', borderRadius: '0.5rem', fontSize: '0.875rem', color: 'var(--text-primary)', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+          <AlertTriangle size={18} style={{ color: 'var(--danger)', flexShrink: 0, marginTop: '0.1rem' }} />
+          <div>
+            <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
+              {language === 'en' ? 'Could not generate the PDF.' : 'No se pudo generar el PDF.'}
+            </div>
+            <div style={{ color: 'var(--text-secondary)', fontFamily: 'monospace', fontSize: '0.8rem' }}>{pdfState.error}</div>
+            <div style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', marginTop: '0.35rem' }}>
+              {language === 'en' ? 'Open the browser console (F12) for more detail and share the error with us.' : 'Abre la consola del navegador (F12) para mas detalle y comparte el error con nosotros.'}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
