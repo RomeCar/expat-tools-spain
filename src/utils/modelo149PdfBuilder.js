@@ -36,7 +36,7 @@ export function generateModelo149Pdf(data, t, language) {
   setC(ACCENT); setF(10, 'normal');
   tx(language === 'en' ? 'Beckham Law — Preparation Summary' : 'Ley Beckham — Resumen de Preparacion', M, y + 12);
   setC(TEXT_MUTED); setF(8, 'normal');
-  tx(`ExpatTools Spain — ${new Date().toLocaleDateString()}`, M + W, y + 6, { align: 'right' });
+  tx(`ExpatGestor — ${new Date().toLocaleDateString()}`, M + W, y + 6, { align: 'right' });
   y += 16;
   doc.setDrawColor(...ACCENT); doc.setLineWidth(0.5); doc.line(M, y, M + W, y);
   y += 8;
@@ -143,7 +143,7 @@ export function generateModelo149Pdf(data, t, language) {
     : 'Esto es un resumen de preparacion, NO un formulario oficial. Presenta el Modelo 149 oficial en sede.agenciatributaria.gob.es',
     PAGE_W / 2, y, { align: 'center' });
   y += 4;
-  tx('ExpatTools Spain — expat-tools-spain.vercel.app', PAGE_W / 2, y, { align: 'center' });
+  tx('ExpatGestor — expatgestor.es', PAGE_W / 2, y, { align: 'center' });
 
   doc.save(`Modelo149_Summary_${data.apellidos || 'Taxpayer'}_${new Date().toISOString().slice(0, 10)}.pdf`);
 }
