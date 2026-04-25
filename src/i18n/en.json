@@ -586,8 +586,22 @@
         "summary": "you'll transfer her about {amount} on the next nomina (a one-time amount, no matter how long the baja runs). After day 8, the INSS handles everything."
       },
       "submit": {
-        "title": "How to Actually Submit the C-133",
-        "intro": "Once you've filled in and signed the C-133, there are three ways to get it to the INSS. The easiest by far is option A.",
+        "title": "How to Generate and Submit the C-133",
+        "intro": "Two parts: first you generate the form (step-by-step below), then you get it to the INSS (three submission options after that).",
+        "generate": {
+          "title": "Step-by-step: generate the C-133 with the form below",
+          "intro": "The wizard at the bottom of this page produces a fully-filled-in C-133 PDF. Here's what you'll fill in at each step:",
+          "s1": "<strong>Click the button below</strong> to jump to the form, then click \"Next\" through each step.",
+          "s2": "<strong>Step 1 — Benefit type:</strong> choose <em>\"Temporary incapacity (medical leave)\"</em>. This is what your worker is claiming when she's on baja médica. (The other options are for childbirth, pregnancy risk, etc.)",
+          "s3": "<strong>Step 2 — Your data (employer):</strong> enter your name, DNI/NIE, and your <strong>CCC</strong> (Código de Cuenta de Cotización — find it on any nómina you've issued, or in IMPORT@SS under your employer profile). Then your home address and a phone number.",
+          "s4": "<strong>Step 3 — Worker data + dates:</strong> her full name, her <strong>NSS</strong> (the 12-digit Número de la Seguridad Social — on her TIE card or any of her nóminas), her DNI/NIE, contract type (full-time vs part-time/hourly — almost always part-time for empleadas de hogar), her <strong>tramo</strong> (look at her last nómina or your monthly SS receipt), the date she started working with you, and the <strong>first day of her parte de baja</strong>.",
+          "s5": "<strong>Step 4 — Contribution bases:</strong> add at least one row with the previous month's contribution base. The base appears on her last nómina under \"Base de cotización\" or on your TGSS monthly receipt. If she's part-time, add the three months prior. The form auto-suggests the base from her tramo — so usually you can just confirm.",
+          "s6": "<strong>Step 4 (continued) — Sign-line info:</strong> enter your locality (e.g. \"Madrid\"), today's day, month, and year. This goes on the C-133 signature line.",
+          "s7": "<strong>Step 5 — Review:</strong> click <strong>\"Download PDF\"</strong>. Print it, sign it by hand on the line, and you have your C-133 ready to hand to her or submit yourself.",
+          "cta": "Open the form"
+        },
+        "submitTitle": "Now submit it (3 options)",
+        "submitIntro": "Once the C-133 is signed, here are the three ways to get it to the INSS. Option A is by far the easiest.",
         "openSede": "Open Sede Electronica",
         "optionA": {
           "title": "Option A — She submits it (recommended, 90% of cases)",
