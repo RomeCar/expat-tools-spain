@@ -548,7 +548,7 @@
       },
       "whoPays": {
         "title": "Quien paga durante la baja?",
-        "p1": "El contrato queda suspendido (no se devenga salario) pero la prestacion por IT sustituye a la nomina. Para enfermedad comun o accidente no laboral, desde la reforma de 2022 el reparto es:",
+        "p1": "Mientras esta de baja, su contrato queda suspendido — no le debes el salario habitual. En su lugar, una prestacion del INSS llamada <strong>IT (Incapacidad Temporal)</strong> sustituye parte de su sueldo. Para enfermedad comun o accidente no laboral, desde la reforma de 2022 el reparto es:",
         "colDays": "Dias de baja",
         "colWho": "Quien paga",
         "colAmount": "Cuantia",
@@ -561,12 +561,26 @@
       },
       "employerSteps": {
         "title": "Lo que tienes que hacer tu (empleador)",
-        "intro": "Hay 4 cosas que debes hacer en cuanto tu empleada te entregue el parte de baja:",
-        "s1": "<strong>Recibir el parte de baja</strong> de la trabajadora (papel o digital). Guarda copia — necesitaras las fechas.",
-        "s2": "<strong>Cumplimentar el C-133</strong> con tus datos (DNI, CCC, domicilio) y los suyos (NSS, NIE, tipo de contrato, tramo, fechas). Usa el formulario de abajo para generarlo.",
+        "intro": "Hay 5 cosas que debes hacer en cuanto tu empleada te entregue el parte de baja:",
+        "s1": "<strong>Recibir el parte de baja</strong> de la trabajadora. El parte de baja es un documento oficial de una pagina que su medico de cabecera (en su centro de salud) imprime o envia digitalmente — indica el grupo de diagnostico, la fecha de inicio y la duracion estimada. Ella conserva el original para el INSS; tu te quedas con foto o copia para tus archivos (necesitaras la fecha de inicio).",
+        "s2": "<strong>Cumplimentar el C-133</strong> con tus datos (DNI, CCC, domicilio) y los suyos (NSS, NIE, tipo de contrato, tramo, fechas). <a href='#form' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Usa el formulario de abajo</a> para generarlo.",
         "s3": "<strong>Firmar el C-133</strong> y entregarle copia firmada para que lo adjunte a su solicitud al INSS.",
-        "s4": "<strong>Pagar los dias 4-8</strong> directamente a la trabajadora (60% de la base reguladora) en la siguiente nomina. Reflejalo como concepto separado, no como salario ordinario.",
+        "s4": "<strong>Pagar los dias 4-8</strong> directamente a la trabajadora (60% de la base reguladora) en la siguiente nomina. Reflejalo como concepto separado, no como salario ordinario. <a href='#example' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Mira el ejemplo de abajo</a>.",
         "s5": "<strong>Continuar pagando cuotas a la SS</strong> con normalidad mediante domiciliacion. NO des de baja en IMPORT@SS — el contrato esta suspendido, no extinguido."
+      },
+      "example": {
+        "title": "Ejemplo: trabajadora de 8h/semana, baja de un mes entero",
+        "intro": "Numeros concretos para una empleada que viene 8 horas por semana (en 2 dias), al SMI de 2026 de 9,55 EUR/h:",
+        "row1": "Salario bruto mensual: 8 h/sem × 4,33 sem × 9,55 EUR ≈ <strong>331 EUR/mes</strong>",
+        "row2": "Base de cotizacion del Tramo 1 (Orden PJC/297/2026): <strong>306 EUR/mes</strong>",
+        "row3": "Base reguladora diaria: 306 / 30 = <strong>10,20 EUR/dia</strong> (dias naturales, no laborables)",
+        "split": "Si esta de baja 30 dias naturales, el reparto es:",
+        "d1": "Dias 1-3: <strong>0 EUR</strong> (nadie paga)",
+        "d2": "Dias 4-8 (5 dias, los pagas tu): 5 × 60% × 10,20 = <strong>30,60 EUR</strong> ← lo que tu le pagas",
+        "d3": "Dias 9-20 (12 dias, paga el INSS): 12 × 60% × 10,20 = 73,44 EUR (no sale de tu bolsillo)",
+        "d4": "Dias 21-30 (10 dias, paga el INSS): 10 × 75% × 10,20 = 76,50 EUR (no sale de tu bolsillo)",
+        "summary": "<strong>De tu bolsillo: ~30,60 EUR por la franja de dias 4-8</strong> — un importe fijo unico por baja, sin importar cuanto dure. A partir del dia 9, el INSS se encarga de todo.",
+        "note": "Ademas, sigues pagando las cuotas mensuales de Seguridad Social como siempre (alrededor de 30-40 EUR para una jornada de 8h/sem despues de las bonificaciones). La prestacion por IT se calcula sobre la base reguladora completa — no se prorratea por sus dias laborables — porque las empleadas de hogar cobran por dias naturales en el sistema de IT, como cualquier otro trabajador."
       },
       "workerSteps": {
         "title": "Lo que tiene que hacer ella (trabajadora)",
@@ -602,6 +616,7 @@
     },
     "form": {
       "title": "Generar el C-133",
+      "headerBadge": "Esto es lo que tu (empleador) tienes que rellenar",
       "subtitle": "Rellena los campos a continuacion. Generaremos un resumen de preparacion que puedes imprimir, firmar y entregar junto al PDF oficial en la Sede Electronica.",
       "step": "Paso",
       "of": "de",
