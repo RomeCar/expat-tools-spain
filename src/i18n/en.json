@@ -27,7 +27,7 @@
     "ctaNomina": "Try the Nomina Generator",
     "ctaGuide": "Read the 2026 Hiring Guide",
     "modulesTitle": "Available Modules",
-    "modulesCount": "3 Available",
+    "modulesCount": "4 Available",
     "nomina": {
       "title": "Domestic Worker Nomina",
       "description": "Generate official payslips (nominas) for your domestic worker. Automatically calculates Seguridad Social contributions, MEI, Desempleo, and net payouts based on 2026 regulations."
@@ -39,6 +39,10 @@
     "modelo149": {
       "title": "Modelo 149 Generator",
       "description": "Apply for the Beckham Law (Regimen Especial de Trabajadores Desplazados) automatically with pre-filled forms."
+    },
+    "bajaMedica": {
+      "title": "Domestic Worker Medical Leave (C-133)",
+      "description": "Step-by-step guide for when your domestic worker goes on medical leave. Generates the C-133 employer certificate the INSS requires for her benefit claim."
     }
   },
   "nomina": {
@@ -527,6 +531,162 @@
         "section3": "Section 3: Purpose",
         "section4": "Section 4: Situation & Dates",
         "box": "Box"
+      }
+    }
+  },
+  "bajaMedica": {
+    "pageTitle": "Domestic Worker Medical Leave",
+    "pageHighlight": "C-133 Employer Certificate",
+    "pageSubtitle": "When your empleada de hogar goes on baja medica, you must issue a C-133 certificate so she can claim her Social Security benefit. We walk you through the process and generate the form for you.",
+    "formNote": "Includes prefilled C-133 PDF",
+    "guide": {
+      "whatIs": {
+        "title": "What is the C-133?",
+        "p1": "The C-133 is the official Certificado del Empleador issued by the INSS. It certifies the employment relationship and contribution bases of a domestic worker so she can apply for Social Security benefits — most commonly for medical leave (incapacidad temporal), but also for childbirth/childcare, pregnancy risk, breastfeeding risk, or care of a seriously ill child.",
+        "p2": "Without a signed C-133 from each of her employers, the INSS cannot calculate her benefit. If she works for several households, every employer must issue one.",
+        "p3": "Important: the C-133 does NOT replace the parte de baja from her doctor — it is a separate document the worker must attach to her benefit application."
+      },
+      "whoPays": {
+        "title": "Who Pays During Sick Leave?",
+        "p1": "The contract is suspended (no salary owed) but the IT benefit replaces income. For common illness or non-work injury, the split since the 2022 reform is:",
+        "colDays": "Days of leave",
+        "colWho": "Who pays",
+        "colAmount": "Amount",
+        "row1": { "days": "Days 1-3", "who": "Nobody", "amount": "0% — unpaid (unless agreed)" },
+        "row2": { "days": "Days 4-8", "who": "Employer", "amount": "60% of base reguladora" },
+        "row3": { "days": "Days 9-20", "who": "INSS (direct payment)", "amount": "60% of base reguladora" },
+        "row4": { "days": "Day 21+", "who": "INSS (direct payment)", "amount": "75% of base reguladora" },
+        "note": "For workplace accidents or occupational illness (AT/EP), the INSS pays 75% directly from the day after the baja — there is no employer-paid window.",
+        "continueSs": "Even though salary is paused, you must keep paying the monthly Social Security contributions during the entire leave. Don't stop the direct debit."
+      },
+      "employerSteps": {
+        "title": "What You (the Employer) Must Do",
+        "intro": "There are 4 things you have to do once your worker hands you her parte de baja medica:",
+        "s1": "<strong>Receive the parte de baja</strong> from the worker (paper or digital). Keep a copy — you'll need the dates.",
+        "s2": "<strong>Fill in the C-133</strong> with your data (DNI, CCC, address) and her data (NSS, NIE, contract type, tramo, dates). Use the form below to generate it.",
+        "s3": "<strong>Sign the C-133</strong> and give a signed copy to the worker so she can attach it to her INSS application.",
+        "s4": "<strong>Pay days 4-8</strong> directly to the worker (60% of the base reguladora) on the next payday. Show it as a separate concept on the nomina, not as ordinary salary.",
+        "s5": "<strong>Keep paying SS contributions</strong> as usual via direct debit. Do not file a baja in IMPORT@SS — the contract is suspended, not terminated."
+      },
+      "workerSteps": {
+        "title": "What She (the Worker) Must Do",
+        "intro": "She is responsible for filing the actual benefit claim. Her steps are:",
+        "s1": "Get the parte de baja from her doctor and hand a copy to every employer within 3 days.",
+        "s2": "Submit follow-up partes de confirmacion every 7 days (common illness) or as the doctor instructs.",
+        "s3": "File the IT benefit application at the INSS within 15 calendar days of the baja, attaching: parte de baja + every employer's signed C-133 + her DNI/NIE + bank details for the payment.",
+        "s4": "When she recovers, deliver the parte de alta to every employer the same day.",
+        "cta": "Open Sede Electronica de la Seguridad Social"
+      },
+      "documents": {
+        "title": "Documents Checklist",
+        "intro": "What you both need to gather:",
+        "d1": "Parte de baja medica (from her doctor) — she gives a copy to you and keeps the original for the INSS",
+        "d2": "C-133 signed by you (one per employer if she has several)",
+        "d3": "Her DNI/NIE and Numero de Afiliacion a la Seguridad Social (NSS)",
+        "d4": "IBAN for the INSS to deposit the benefit"
+      },
+      "after": {
+        "title": "After She Returns",
+        "p1": "Once she recovers and you receive the parte de alta:",
+        "a1": "She returns to work the day after the alta",
+        "a2": "Resume normal salary on the next nomina",
+        "a3": "No need to re-register her in IMPORT@SS — the contract was never terminated"
+      },
+      "mistakes": {
+        "title": "Common Mistakes to Avoid",
+        "m1": "Filing a baja in IMPORT@SS — DO NOT. Sick leave suspends the contract; it does not end it. A baja means losing her job.",
+        "m2": "Stopping the SS direct debit — contributions continue during the entire leave",
+        "m3": "Not paying days 4-8 — the worker can claim them with interest plus penalties",
+        "m4": "Skipping the C-133 — without it, the INSS denies or delays her benefit indefinitely"
+      }
+    },
+    "form": {
+      "title": "Generate the C-133",
+      "subtitle": "Fill in the fields below. We'll produce a preparation summary you can print, sign, and submit alongside the official PDF on Sede Electronica.",
+      "step": "Step",
+      "of": "of",
+      "next": "Next",
+      "back": "Back",
+      "steps": {
+        "s1": "Benefit type",
+        "s2": "Employer",
+        "s3": "Worker & dates",
+        "s4": "Contribution bases",
+        "s5": "Review"
+      },
+      "prestacion": {
+        "title": "Benefit being claimed",
+        "help": "What is the worker applying for? For a regular sick leave, choose 'Temporary incapacity'."
+      },
+      "employer": {
+        "name": "Surname and name",
+        "dni": "DNI / NIE / Passport",
+        "ccc": "CCC (Contribution Account Code)",
+        "cccHelp": "Your employer code with the TGSS — the same one you use for monthly nominas",
+        "via": "Street",
+        "numero": "Number",
+        "bloque": "Block",
+        "escalera": "Staircase",
+        "piso": "Floor",
+        "puerta": "Door",
+        "cp": "Postal code",
+        "localidad": "Locality",
+        "provincia": "Province",
+        "telefono": "Phone",
+        "address": "Address"
+      },
+      "worker": {
+        "name": "Surname and name",
+        "nss": "Social Security number (NSS)",
+        "nssHelp": "Her 12-digit Numero de Afiliacion — appears on her TIE card or any of her nominas",
+        "dni": "DNI / NIE / Passport",
+        "telefono": "Phone",
+        "contractTitle": "Contract type",
+        "tramo": "Contribution bracket (tramo)",
+        "tramoHelp": "Her assigned bracket from the TGSS. If you don't know, check her last nomina or the SS receipt.",
+        "fechaInicio": "Activity start date with you",
+        "fechaInicioHelp": "When she started working in your household",
+        "fechaInterrupcion": "Date of medical leave (baja)",
+        "fechaInterrupcionHelp": "First day of the baja, as stated on the medical certificate",
+        "fechaInterrupcionNcm": "Start of childbirth/childcare leave",
+        "fechaInterrupcionNcmHelp": "For births, the day after the birth (or birth day if she didn't work that day)",
+        "fechaPrevistaFin": "Expected contract end date (if any)",
+        "fechaPrevistaFinHelp": "Only fill in if her contract is temporary",
+        "ncmTitle": "Mandatory rest period",
+        "fechaInicioObligatorio": "Start of mandatory period",
+        "fechaFinObligatorio": "End of mandatory period"
+      },
+      "bases": {
+        "required": "INSS requires {n} contribution base(s) — you have a {type} contract.",
+        "completo": "full-time",
+        "parcial": "part-time",
+        "tramoHint": "Suggested base for the selected tramo: {base} EUR/month",
+        "year": "Year",
+        "month": "Month",
+        "days": "Days quoted",
+        "base": "Base (EUR)",
+        "daysShort": "days",
+        "add": "Add month",
+        "remove": "Remove",
+        "observaciones": "Observations (optional)"
+      },
+      "signature": {
+        "title": "Signature line",
+        "localidad": "Locality",
+        "dia": "Day",
+        "mes": "Month",
+        "anio": "Year"
+      },
+      "review": {
+        "title": "C-133 Preparation Summary",
+        "subtitle": "Use this as a reference when filing the official form on Sede Electronica or printing it for INSS.",
+        "downloadPdf": "Download PDF",
+        "goToSede": "Open Sede Electronica",
+        "section1": "Section 1: Benefit",
+        "section2": "Section 2: Employer",
+        "section3": "Section 3: Worker & dates",
+        "section4": "Section 4: Contribution bases",
+        "section5": "Section 5: Signature"
       }
     }
   }
