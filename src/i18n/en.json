@@ -678,7 +678,7 @@
     "form": {
       "title": "Generate the C-133",
       "headerBadge": "This is what you (the employer) need to fill in",
-      "subtitle": "Fill in the fields below. We'll produce a preparation summary you can print, sign, and submit alongside the official PDF on Sede Electronica.",
+      "subtitle": "Fill in the fields below. We'll fill the OFFICIAL C-133 PDF from seg-social.es with your data — print it, sign it by hand, submit. No transcription needed.",
       "step": "Step",
       "of": "of",
       "next": "Next",
@@ -754,9 +754,9 @@
         "anio": "Year"
       },
       "review": {
-        "title": "C-133 Preparation Summary",
-        "subtitle": "Use this as a reference when filing the official form on Sede Electronica or printing it for INSS.",
-        "downloadPdf": "Download PDF",
+        "title": "Review your C-133",
+        "subtitle": "Check the values below — these will be filled into the OFFICIAL C-133 PDF from seg-social.es. Click the button to download the filled form, then print it, sign it by hand, and submit per the walkthrough above.",
+        "downloadPdf": "Download official C-133 (filled)",
         "goToSede": "Open Sede Electronica",
         "section1": "Section 1: Benefit",
         "section2": "Section 2: Employer",

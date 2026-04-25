@@ -678,7 +678,7 @@
     "form": {
       "title": "Generar el C-133",
       "headerBadge": "Esto es lo que tu (empleador) tienes que rellenar",
-      "subtitle": "Rellena los campos a continuacion. Generaremos un resumen de preparacion que puedes imprimir, firmar y entregar junto al PDF oficial en la Sede Electronica.",
+      "subtitle": "Rellena los campos a continuacion. Cumplimentaremos el PDF OFICIAL del C-133 de seg-social.es con tus datos — imprimelo, firmalo a mano y presentalo. Sin transcripcion manual.",
       "step": "Paso",
       "of": "de",
       "next": "Siguiente",
@@ -754,9 +754,9 @@
         "anio": "Ano"
       },
       "review": {
-        "title": "Resumen de preparacion del C-133",
-        "subtitle": "Usa este resumen como referencia al rellenar el formulario oficial en la Sede Electronica o al imprimirlo para el INSS.",
-        "downloadPdf": "Descargar PDF",
+        "title": "Revisa tu C-133",
+        "subtitle": "Comprueba los valores a continuacion — se cumplimentaran en el PDF OFICIAL del C-133 de seg-social.es. Haz clic en el boton para descargar el formulario relleno, imprimelo, firmalo a mano y presentalo segun la guia de arriba.",
+        "downloadPdf": "Descargar C-133 oficial cumplimentado",
         "goToSede": "Ir a Sede Electronica",
         "section1": "Seccion 1: Prestacion",
         "section2": "Seccion 2: Empleador",

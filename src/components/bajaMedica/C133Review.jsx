@@ -40,8 +40,8 @@ export default function C133Review({ data }) {
     (data.empCp || data.empLocalidad ? ` — ${[data.empCp, data.empLocalidad, data.empProvincia].filter(Boolean).join(' ')}` : '');
 
   const exportPDF = async () => {
-    const { generateC133Pdf } = await import('../../utils/c133PdfBuilder');
-    generateC133Pdf(data, t, language);
+    const { generateOfficialC133Pdf } = await import('../../utils/c133OfficialFiller');
+    await generateOfficialC133Pdf(data);
   };
 
   return (
