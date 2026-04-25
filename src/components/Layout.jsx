@@ -12,9 +12,14 @@ export default function Layout() {
       <header className="header-nav">
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Compass size={32} className="gradient-text" style={{ color: 'var(--accent-primary)' }} />
-          <h2 style={{ margin: 0 }}>
-            Expat<span className="gradient-text">Tools</span> Spain
-          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+            <h2 style={{ margin: 0 }}>
+              Expat<span className="gradient-text">Gestor</span>
+            </h2>
+            <span style={{ fontSize: '0.7rem', color: 'var(--text-tertiary)', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 500, marginTop: '0.1rem' }}>
+              Expat Tools Spain
+            </span>
+          </div>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Link to="/guides/domestica" className="btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.875rem' }}>

@@ -1,9 +1,14 @@
 // regulations.js
 // 2026 Social Security regulations for Sistema Especial de Empleados de Hogar
 // Sources: Orden PJC/297/2026 (BOE-A-2026-7296) + RD 126/2026 (BOE 19/02/2026)
+//
+// IMPORTANT: When ANY value below changes (SMI updates mid-year, new BOE order,
+// rate adjustments), update `lastVerified` and call it out in the PR description.
+// The guides surface this date so users see how fresh the data is.
 
 export const REGULATIONS_2026 = {
   year: 2026,
+  lastVerified: '2026-04-25', // YYYY-MM-DD — bump this when any number in this file changes
 
   smi: {
     hourly: 9.55,           // EUR/hour — includes vacation + pagas extra proration (for hourly contracts)

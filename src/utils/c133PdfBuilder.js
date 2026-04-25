@@ -41,7 +41,7 @@ export function generateC133Pdf(data, t, language) {
     ? 'Employer Certificate — Domestic Workers (INSS) — Preparation Summary'
     : 'Certificado del Empleador — Empleados de Hogar (INSS) — Resumen', M, y + 12);
   setC(TEXT_MUTED); setF(8, 'normal');
-  tx(`ExpatTools Spain — ${new Date().toLocaleDateString()}`, M + W, y + 6, { align: 'right' });
+  tx(`ExpatGestor — ${new Date().toLocaleDateString()}`, M + W, y + 6, { align: 'right' });
   y += 16;
   doc.setDrawColor(...ACCENT); doc.setLineWidth(0.5); doc.line(M, y, M + W, y);
   y += 8;
@@ -138,7 +138,7 @@ export function generateC133Pdf(data, t, language) {
   const footerLines = doc.splitTextToSize(footer1, W);
   doc.text(footerLines, PAGE_W / 2, y, { align: 'center' });
   y += footerLines.length * 3.5 + 1;
-  tx('ExpatTools Spain — expat-tools-spain.vercel.app', PAGE_W / 2, y, { align: 'center' });
+  tx('ExpatGestor — expatgestor.es', PAGE_W / 2, y, { align: 'center' });
 
   doc.save(`C133_${data.workName || 'Trabajador'}_${new Date().toISOString().slice(0, 10)}.pdf`);
 }
