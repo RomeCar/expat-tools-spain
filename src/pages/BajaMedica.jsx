@@ -1,7 +1,7 @@
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import C133Form from '../components/bajaMedica/C133Form';
-import { CheckCircle, AlertTriangle, FileText, Info, ExternalLink, ChevronRight, List, Stethoscope, Calendar, Coins } from 'lucide-react';
+import { CheckCircle, AlertTriangle, FileText, Info, ExternalLink, ChevronRight, List, Stethoscope, Calendar, Coins, Calculator } from 'lucide-react';
 
 function Section({ id, icon: Icon, title, children }) {
   return (
@@ -40,6 +40,10 @@ function P({ children }) {
   return <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', lineHeight: 1.7 }}>{children}</p>;
 }
 
+function PHtml({ html }) {
+  return <p style={{ color: 'var(--text-secondary)', marginBottom: '0.75rem', lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
 export default function BajaMedica() {
   const { t, language } = useLanguage();
   const b = t('bajaMedica');
@@ -50,6 +54,7 @@ export default function BajaMedica() {
     { id: 'what-is', label: g.whatIs.title },
     { id: 'who-pays', label: g.whoPays.title },
     { id: 'employer-steps', label: g.employerSteps.title },
+    { id: 'example', label: g.example.title },
     { id: 'worker-steps', label: g.workerSteps.title },
     { id: 'documents', label: g.documents.title },
     { id: 'after', label: g.after.title },
@@ -98,7 +103,7 @@ export default function BajaMedica() {
         </Section>
 
         <Section id="who-pays" icon={Coins} title={g.whoPays.title}>
-          <P>{g.whoPays.p1}</P>
+          <PHtml html={g.whoPays.p1} />
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem', marginTop: '0.5rem' }}>
             <thead>
               <tr>
@@ -126,6 +131,28 @@ export default function BajaMedica() {
         <Section id="employer-steps" icon={Calendar} title={g.employerSteps.title}>
           <P>{g.employerSteps.intro}</P>
           <StepList items={[g.employerSteps.s1, g.employerSteps.s2, g.employerSteps.s3, g.employerSteps.s4, g.employerSteps.s5]} />
+        </Section>
+
+        <Section id="example" icon={Calculator} title={g.example.title}>
+          <P>{g.example.intro}</P>
+          <div style={{ background: 'var(--bg-tertiary)', padding: '1rem 1.25rem', borderRadius: '0.5rem', marginBottom: '0.75rem' }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              {[g.example.row1, g.example.row2, g.example.row3].map((row, i) => (
+                <li key={i} dangerouslySetInnerHTML={{ __html: row }} />
+              ))}
+            </ul>
+          </div>
+          <div style={{ marginTop: '0.75rem', fontWeight: '600', color: 'var(--text-primary)', fontSize: '0.95rem' }}>{g.example.split}</div>
+          <ul style={{ listStyle: 'none', padding: 0, margin: '0.5rem 0 0.75rem 0', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            {[g.example.d1, g.example.d2, g.example.d3, g.example.d4].map((row, i) => (
+              <li key={i} style={{ paddingLeft: '0.75rem', borderLeft: '3px solid var(--border-color)' }} dangerouslySetInnerHTML={{ __html: row }} />
+            ))}
+          </ul>
+          <div style={{ background: 'rgba(16, 185, 129, 0.08)', padding: '1rem', borderRadius: '0.5rem', borderLeft: '4px solid var(--success)', marginTop: '0.75rem' }}>
+            <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }} dangerouslySetInnerHTML={{ __html: g.example.summary }} />
+          </div>
+          <P>&nbsp;</P>
+          <PHtml html={g.example.note} />
         </Section>
 
         <Section id="worker-steps" icon={Calendar} title={g.workerSteps.title}>

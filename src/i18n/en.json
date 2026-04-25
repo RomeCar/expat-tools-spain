@@ -548,7 +548,7 @@
       },
       "whoPays": {
         "title": "Who Pays During Sick Leave?",
-        "p1": "The contract is suspended (no salary owed) but the IT benefit replaces income. For common illness or non-work injury, the split since the 2022 reform is:",
+        "p1": "While she is on sick leave, her contract is paused — you don't owe her the regular salary. Instead, an INSS benefit called <strong>IT (Incapacidad Temporal — 'Temporary Incapacity')</strong> replaces part of her income. For common illness or non-work injury, the split since the 2022 reform is:",
         "colDays": "Days of leave",
         "colWho": "Who pays",
         "colAmount": "Amount",
@@ -561,12 +561,26 @@
       },
       "employerSteps": {
         "title": "What You (the Employer) Must Do",
-        "intro": "There are 4 things you have to do once your worker hands you her parte de baja medica:",
-        "s1": "<strong>Receive the parte de baja</strong> from the worker (paper or digital). Keep a copy — you'll need the dates.",
-        "s2": "<strong>Fill in the C-133</strong> with your data (DNI, CCC, address) and her data (NSS, NIE, contract type, tramo, dates). Use the form below to generate it.",
+        "intro": "There are 5 things you have to do once your worker hands you her parte de baja medica:",
+        "s1": "<strong>Receive the parte de baja</strong> from the worker. The parte de baja is an official one-page document her doctor (medico de cabecera at her health centre) prints or sends digitally — it states the diagnosis category, the start date of the leave, and the expected duration. She keeps the original for the INSS; you keep a photo or photocopy for your own records (you'll need the start date).",
+        "s2": "<strong>Fill in the C-133</strong> with your data (DNI, CCC, address) and her data (NSS, NIE, contract type, tramo, dates). <a href='#form' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>Use the form below</a> to generate it.",
         "s3": "<strong>Sign the C-133</strong> and give a signed copy to the worker so she can attach it to her INSS application.",
-        "s4": "<strong>Pay days 4-8</strong> directly to the worker (60% of the base reguladora) on the next payday. Show it as a separate concept on the nomina, not as ordinary salary.",
+        "s4": "<strong>Pay days 4-8</strong> directly to the worker (60% of the base reguladora) on the next payday. Show it as a separate concept on the nomina, not as ordinary salary. <a href='#example' style='color: var(--accent-primary); font-weight: 700; text-decoration: underline;'>See the worked example below</a>.",
         "s5": "<strong>Keep paying SS contributions</strong> as usual via direct debit. Do not file a baja in IMPORT@SS — the contract is suspended, not terminated."
+      },
+      "example": {
+        "title": "Worked Example: 8h/week Worker on a Full Month of Baja",
+        "intro": "Concrete numbers for a worker who comes 8 hours per week (over 2 days), at the 2026 SMI of 9.55 EUR/h:",
+        "row1": "Monthly gross salary: 8 h/week × 4.33 weeks × 9.55 EUR ≈ <strong>331 EUR/month</strong>",
+        "row2": "Tramo 1 contribution base (Orden PJC/297/2026): <strong>306 EUR/month</strong>",
+        "row3": "Daily base reguladora: 306 / 30 = <strong>10.20 EUR/day</strong> (calendar days, not workdays)",
+        "split": "If she's on baja for 30 calendar days, the 30 days are split like this:",
+        "d1": "Days 1-3: <strong>0 EUR</strong> (nobody pays)",
+        "d2": "Days 4-8 (5 days, paid by you): 5 × 60% × 10.20 = <strong>30.60 EUR</strong> ← what you pay her",
+        "d3": "Days 9-20 (12 days, paid by INSS direct): 12 × 60% × 10.20 = 73.44 EUR (not your money)",
+        "d4": "Days 21-30 (10 days, paid by INSS direct): 10 × 75% × 10.20 = 76.50 EUR (not your money)",
+        "summary": "<strong>Your out-of-pocket: ~30.60 EUR for the days-4-8 window</strong> — a one-time fixed amount per leave, no matter how long she's out. After day 8, the INSS handles everything.",
+        "note": "On top of that you keep paying the monthly Social Security contributions as usual (around 30-40 EUR for an 8h/week worker after bonifications). The IT cash benefit is calculated on the full base reguladora — not pro-rated by her actual workdays — because empleadas de hogar are paid by calendar day in the IT system, like any other worker."
       },
       "workerSteps": {
         "title": "What She (the Worker) Must Do",
@@ -602,6 +616,7 @@
     },
     "form": {
       "title": "Generate the C-133",
+      "headerBadge": "This is what you (the employer) need to fill in",
       "subtitle": "Fill in the fields below. We'll produce a preparation summary you can print, sign, and submit alongside the official PDF on Sede Electronica.",
       "step": "Step",
       "of": "of",
